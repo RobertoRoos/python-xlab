@@ -46,7 +46,7 @@ class VisaInterface(Interface):
     def get_id(self):
         return self._visa_instrument.ask('*IDN?')
     
-    def set_async(self, async):
+    def set_asyn(self, asyn):
         raise NotImplementedError
         
     def command(self, data):
@@ -68,9 +68,12 @@ class VisaInterface(Interface):
 
 class DummyResourceManager:
     '''Used when PyVisa is not available; lists no instruments'''
-    def list_resources(self):
+    @staticmethod
+    def list_resources():
         return []
-    def get_instrument(self, visa_id):
+    
+    @staticmethod
+    def get_instrument(visa_id):
         raise RuntimeError('PyVisa module could not be loaded; '
                            'access to VISA instruments is not possible')
 

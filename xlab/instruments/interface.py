@@ -36,7 +36,7 @@ class Interface:
     def get_id(self):
         raise NotImplementedError
     
-    def set_async(self, async):
+    def set_asyn(self, asyn):
         raise NotImplementedError
         
     def command(self, data):

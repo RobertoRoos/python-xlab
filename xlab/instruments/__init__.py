@@ -127,10 +127,11 @@ def find_instrument(interface_regexp):
     matches = [id for id in list_instruments() 
                if re.match(interface_regexp, id)]
     
-    if len(matches) == 1:
+    nmatches = len(matches)
+    if nmatches == 1:
         return get_instrument(matches[0])
     
-    elif len(matches) == 0:
+    elif nmatches == 0:
         raise RuntimeError('No instrument was found to match %r' % interface_regexp)
     else:
         raise RuntimeError('Multiple instruments were found to match %r: %r' % 
@@ -175,8 +176,8 @@ class Instrument:
         if self.timeout is not None:
             self._interface.set_timeout(self.timeout)
     
-    def set_async(self, async):
-        self._interface.set_async(async)
+    def set_asyn(self, asyn):
+        self._interface.set_asyn(asyn)
         
     def command(self, data):
         return self._interface.command(data)

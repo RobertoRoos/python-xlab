@@ -52,12 +52,11 @@ class Plotter:
         
             self._axes = [plt.subplot(n_rows, n_cols, i+1) for i in range(n_plots)]
         
-        i = 0
-        for ax, column in zip(self._axes, columns):
+        for axis, column in zip(self._axes, columns):
             try:
-                ax.cla()
-                ax.plot(time, data[column], self._style)
+                axis.cla()
+                axis.plot(time, data[column], self._style)
             except ValueError:
                 pass
                 
-            ax.set_title(column)
+            axis.set_title(column)

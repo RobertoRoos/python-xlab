@@ -42,14 +42,14 @@ class SerialPort:
     def list():
         ports = serial.tools.list_ports.comports()
         
-        def stripCOM(description):
+        def strip_com(description):
             'Strip (COM...) from description'
             match = re.match(r'(.*?)\s*\(COM\d+\)\s*$', description)
             if match:
                 return match.group(1)
             return description
         
-        return [p[0] + ':' + stripCOM(p[1]) for p in ports]
+        return [p[0] + ':' + strip_com(p[1]) for p in ports]
     
     @staticmethod
     def get_interface(serial_id):

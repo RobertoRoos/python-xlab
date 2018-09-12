@@ -85,17 +85,17 @@ class Experiment:
         self._measure = measure
         
         if plot is None:
-            plot = Plotter(),
+            plot = (Plotter(),)
         elif not isinstance(plot, collections.abc.Iterable):
-            plot = plot,
+            plot = (plot,)
         self._plot = plot
         
         if not isinstance(log, collections.abc.Iterable):
-            log = log,
+            log = (log,)
         self._log = log
         
         if not isinstance(apply_condition, collections.abc.Iterable):
-            apply_condition = apply_condition,
+            apply_condition = (apply_condition,)
         self._apply_condition = apply_condition
         
         self._conditions = conditions

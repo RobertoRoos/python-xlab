@@ -36,11 +36,11 @@ import warnings
 
 class Conditions(collections.OrderedDict):
     def __init__(self, *args, **kwargs):
-        if sys.version_info < (3,6) and kwargs:
+        if sys.version_info < (3, 6) and kwargs:
             warnings.warn('Initializing a Conditions object using keyword '
-                'arguments results in undefined order of the variables '
-                'when using Python < 3.6', 
-                RuntimeWarning)
+                          'arguments results in undefined order of the '
+                          'variables when using Python < 3.6', 
+                          RuntimeWarning)
                 
         super().__init__(*args, **kwargs)
         
@@ -76,7 +76,9 @@ class Conditions(collections.OrderedDict):
         return Conditions(zip(variables, zip(*values)))
 
 if __name__ == '__main__':
-    a = Conditions(vset = [1,2,3], iset = [3,4,6], test = ['a','b','c']) 
+    def test():
+        cond = Conditions(vset=[1, 2, 3], iset=[3, 4, 6], test=['a', 'b', 'c']) 
        
-    print(a, a.product(), a.random(), a.product().random(), sep='\n')
+        print(cond, cond.product(), cond.random(), cond.product().random(), sep='\n')
 
+    test()
