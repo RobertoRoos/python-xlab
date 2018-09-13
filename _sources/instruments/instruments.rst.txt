@@ -1,0 +1,23 @@
+
+.. _xlab_instruments:
+
+.. automodule:: instruments
+
+    
+Supported instruments
+---------------------
+
+The following instruments are supported:
+
+.. toctree::
+   :glob:
+   :maxdepth: 2
+   
+   manufacturers/agilent/*
+   manufacturers/lecroy/*
+   manufacturers/mitutoyo/*
+   manufacturers/rohdeschwarz/*
+   manufacturers/tti/*
+   manufacturers/velleman/*
+
+

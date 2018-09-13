@@ -1,0 +1,171 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Instruments module &#8212; xlab 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Agilent 33220 Function generator" href="manufacturers/agilent/a33220.html" />
+    <link rel="prev" title="Introduction" href="../intro.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="manufacturers/agilent/a33220.html" title="Agilent 33220 Function generator"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../intro.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">xlab 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-instruments"><span id="xlab-instruments"></span></span><div class="section" id="instruments-module">
+<h1>Instruments module<a class="headerlink" href="#instruments-module" title="Permalink to this headline">¶</a></h1>
+<p>The instruments module allows you to interface with instruments in the lab.
+Available instruments can be listed using the list_instruments function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xlab</span> <span class="k">import</span> <span class="n">instruments</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">instruments</span><span class="o">.</span><span class="n">list_instruments</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>This results in a list of interface id’s to instrument interfaces. Using this
+interface id, an Instrument object can be created:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">power_supply</span> <span class="o">=</span> <span class="n">instruments</span><span class="o">.</span><span class="n">get_instrument</span><span class="p">(</span><span class="s1">&#39;visa:ASRL5::INSTR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first part of the interface id (<code class="docutils literal notranslate"><span class="pre">visa</span></code> in the previous line) specifies the
+backend module that is used to connect to the instrument. Currently, there are
+two backends available: the <code class="docutils literal notranslate"><span class="pre">visa</span></code> backend to connect using the National
+Instruments VISA library, and the <code class="docutils literal notranslate"><span class="pre">serialport</span></code> backend to connect using a
+serial port (possibly a USB virtual serial port).</p>
+<p>The instruments module uses the interface id to connect to the instrument. Then,
+for VISA instruments, it queries the instrument for its identification (e.g. 
+manufacturer and type number). Using this identification, it finds the appropriate
+Instrument class and creates an instance.</p>
+<p>For instruments interfacing using the serialport backend, the identification is
+not requested from the instrument, but obtained from the description of the
+serial port. Again, using the identification, the appropriate Instrument class is
+found and the instance is created.</p>
+<p>You can now use the resulting instance to access the instrument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">power_supply</span><span class="p">)</span>
+<span class="n">power_supply</span><span class="o">.</span><span class="n">set_voltage</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="n">power_supply</span><span class="o">.</span><span class="n">enable_output</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Often, it is not desirable to specify the fixed instrument identification, but
+to use a search expression. For example, if the same type of instrument is used,
+but with a different serial number, this instrument could be used. Finding
+an instrument based on a search expression is done using the <code class="docutils literal notranslate"><span class="pre">find_instrument</span></code>
+function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">instruments</span><span class="o">.</span><span class="n">find_instrument</span><span class="p">(</span><span class="s1">&#39;serialport:.*:K8090 8-Channel Relay Card$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The argument of the <code class="docutils literal notranslate"><span class="pre">find_instrument</span></code> function is a regular expression. The
+example above, using <code class="docutils literal notranslate"><span class="pre">.*</span></code>, matches the K8090 relay card on any serial port.</p>
+</div>
+<div class="section" id="supported-instruments">
+<h1>Supported instruments<a class="headerlink" href="#supported-instruments" title="Permalink to this headline">¶</a></h1>
+<p>The following instruments are supported:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manufacturers/agilent/a33220.html">Agilent 33220 Function generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manufacturers/agilent/a335xx.html">Agilent 335xx Function generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manufacturers/agilent/a34xxx.html">Agilent 34xxx Multimeters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manufacturers/lecroy/hdo6xxx.html">LeCroy HDO6xxx Oscilloscope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manufacturers/lecroy/ws104.html">LeCroy WaveSurfer WS104 Oscilloscope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manufacturers/mitutoyo/usb_itn.html">Mitutoyo USB-ITN Digimatic interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manufacturers/rohdeschwarz/sml01.html">Rohde &amp; Schwarz SML01 Signal Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manufacturers/tti/ld400.html">TTi LD400 Electronic DC Load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manufacturers/tti/pl303.html">TTi PL303 Power Supply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manufacturers/velleman/k8090.html">Velleman K8090 / VM8090 8-channel relay card</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Instruments module</a></li>
+<li><a class="reference internal" href="#supported-instruments">Supported instruments</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../intro.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="manufacturers/agilent/a33220.html"
+                        title="next chapter">Agilent 33220 Function generator</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/instruments/instruments.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="manufacturers/agilent/a33220.html" title="Agilent 33220 Function generator"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../intro.html" title="Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">xlab 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Rob Reilink.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

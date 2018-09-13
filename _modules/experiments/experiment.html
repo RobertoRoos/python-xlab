@@ -1,0 +1,416 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>experiments.experiment &#8212; xlab 1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">xlab 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for experiments.experiment</h1><div class="highlight"><pre>
+<span></span><span class="c1"># BSD 3-Clause License</span>
+<span class="c1"># </span>
+<span class="c1"># Copyright (c) 2018, DEMCON advanced mechatronics</span>
+<span class="c1"># All rights reserved.</span>
+<span class="c1"># </span>
+<span class="c1"># Redistribution and use in source and binary forms, with or without</span>
+<span class="c1"># modification, are permitted provided that the following conditions are met:</span>
+<span class="c1"># </span>
+<span class="c1"># * Redistributions of source code must retain the above copyright notice, this</span>
+<span class="c1">#   list of conditions and the following disclaimer.</span>
+<span class="c1"># </span>
+<span class="c1"># * Redistributions in binary form must reproduce the above copyright notice,</span>
+<span class="c1">#   this list of conditions and the following disclaimer in the documentation</span>
+<span class="c1">#   and/or other materials provided with the distribution.</span>
+<span class="c1"># </span>
+<span class="c1"># * Neither the name of the copyright holder nor the names of its</span>
+<span class="c1">#   contributors may be used to endorse or promote products derived from</span>
+<span class="c1">#   this software without specific prior written permission.</span>
+<span class="c1"># </span>
+<span class="c1"># THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span>
+<span class="c1"># AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span class="c1"># IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="c1"># DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE</span>
+<span class="c1"># FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<span class="c1"># DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span>
+<span class="c1"># SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="c1"># CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+<span class="c1"># OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="c1"># </span>
+<span class="kn">import</span> <span class="nn">collections.abc</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">PySide</span> <span class="k">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">.plotter</span> <span class="k">import</span> <span class="n">Plotter</span>
+
+
+<div class="viewcode-block" id="Experiment"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment">[docs]</a><span class="k">class</span> <span class="nc">Experiment</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">    This class enables performing an experiment. It has the following</span>
+<span class="sd">    features:</span>
+<span class="sd">    </span>
+<span class="sd">    An experiment consists of a series of measurements. A measurement</span>
+<span class="sd">    comprises one or more measured values at a single time instant. </span>
+<span class="sd">    </span>
+<span class="sd">    An experiment may consist of multiple conditions. A condition is a set</span>
+<span class="sd">    of values for input variables that are varied.</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments:</span>
+<span class="sd">        measurement: function</span>
+<span class="sd">            The measurement function is called each time interval and will perform</span>
+<span class="sd">            the actual measurement</span>
+<span class="sd">            </span>
+<span class="sd">        plot: function or sequence of functions</span>
+<span class="sd">            The plot function(s) is/are called for every time interval, and are</span>
+<span class="sd">            passed all measurements performed up to now. This function can be used</span>
+<span class="sd">            to show the progress of the measurement.</span>
+<span class="sd">            </span>
+<span class="sd">            Defaults to a :class:`Plotter` () instance that plots all variables</span>
+<span class="sd">            versus time.</span>
+<span class="sd">            </span>
+<span class="sd">        log: Logger object or sequence of Logger objects</span>
+<span class="sd">            The log function(s) is/are called for every time interval, with the last</span>
+<span class="sd">            measurement data. The log function can be used to store the measurement</span>
+<span class="sd">            result</span>
+<span class="sd">            </span>
+<span class="sd">        conditions: sequence of (variable name, sequence-of-value) tuples</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        measurements_per_condition:</span>
+<span class="sd">            The amount of repetitions of the measurement, before moving to the next</span>
+<span class="sd">            condition. If conditions are given, defaults to 1. If no conditions are</span>
+<span class="sd">            given, defaults to infinity.</span>
+<span class="sd">            </span>
+<span class="sd">        apply_condition: function or sequence of functions</span>
+<span class="sd">            Function to be called after each change of condition variables,</span>
+<span class="sd">            before the next measurement function.</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measure</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="p">(),</span> <span class="n">conditions</span><span class="o">=</span><span class="p">(),</span> 
+                 <span class="n">measurements_per_condition</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_condition</span><span class="o">=</span><span class="p">()):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span> <span class="o">=</span> <span class="n">measure</span>
+        
+        <span class="k">if</span> <span class="n">plot</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">plot</span> <span class="o">=</span> <span class="p">(</span><span class="n">Plotter</span><span class="p">(),)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
+            <span class="n">plot</span> <span class="o">=</span> <span class="p">(</span><span class="n">plot</span><span class="p">,)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_plot</span> <span class="o">=</span> <span class="n">plot</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">log</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="p">(</span><span class="n">log</span><span class="p">,)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span> <span class="o">=</span> <span class="n">log</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">apply_condition</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
+            <span class="n">apply_condition</span> <span class="o">=</span> <span class="p">(</span><span class="n">apply_condition</span><span class="p">,)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_apply_condition</span> <span class="o">=</span> <span class="n">apply_condition</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conditions</span> <span class="o">=</span> <span class="n">conditions</span>
+
+        <span class="k">if</span> <span class="n">measurements_per_condition</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">conditions</span><span class="p">:</span>
+                <span class="n">measurements_per_condition</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">measurements_per_condition</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_measurements_per_condition</span> <span class="o">=</span> <span class="n">measurements_per_condition</span>
+    
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QTimer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_timer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_t0</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_first</span> <span class="o">=</span> <span class="kc">False</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_measurements_for_condition</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variable_values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variable_values_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([])</span>
+    
+    <span class="k">def</span> <span class="nf">_on_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">measurement</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_t0</span><span class="p">)</span>
+            
+            <span class="c1"># Varying of variables            </span>
+            <span class="n">condition_changed</span> <span class="o">=</span> <span class="kc">False</span>
+            
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurements_for_condition</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurements_per_condition</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_measurements_for_condition</span> <span class="o">=</span> <span class="mi">0</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_variable_values</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_values_iter</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+                    <span class="k">return</span>
+                
+                <span class="n">condition_changed</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_measurements_for_condition</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                    
+            <span class="k">for</span> <span class="n">variable</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_values</span><span class="p">):</span>
+                <span class="n">measurement</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                
+            <span class="k">if</span> <span class="n">condition_changed</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">apply_condition</span><span class="p">(</span><span class="n">measurement</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">measurement</span><span class="p">)</span>
+            
+            <span class="n">columns</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">measurement</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+                        
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">promote_datatype</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)))</span> 
+                                  <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">data</span><span class="p">)])</span>
+                
+                
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,),</span> <span class="n">dtype</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">columns</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Measure returned different columns &#39;</span>
+                                       <span class="s1">&#39;(or different order) than first call&#39;</span><span class="p">)</span>        
+    
+            <span class="n">buffer_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">&gt;=</span> <span class="n">buffer_size</span><span class="p">:</span>
+                <span class="c1"># Double the buffer size</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">buffer_size</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:</span><span class="n">buffer_size</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+            
+            <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_len</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">+=</span> <span class="mi">1</span>
+             
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_first</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="p">])</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">_first</span> <span class="o">=</span> <span class="kc">False</span>
+                
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+            <span class="k">raise</span>
+
+<div class="viewcode-block" id="Experiment.promote_datatype"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.promote_datatype">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">promote_datatype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
+        <span class="s1">&#39;If datatype is int (e.g. 0) promote to float&#39;</span> 
+        <span class="k">return</span> <span class="p">{</span><span class="nb">int</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">:</span> <span class="nb">object</span><span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span></div>
+        
+
+<div class="viewcode-block" id="Experiment.start"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Start the experiment using the specified sampling interval (in seconds)</span>
+<span class="sd">        If a measurement takes longer than the specified interval, measurements</span>
+<span class="sd">        are performed at the maximum possible rate</span>
+<span class="sd">        </span>
+<span class="sd">        The sampling interval defaults to 0, i.e. sampling at the maximum possible</span>
+<span class="sd">        rate</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conditions</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_conditions</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_variable_values_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">values</span><span class="p">))</span>
+
+            <span class="c1"># Force setting of variables for first condition at first measurement</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_measurements_for_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurements_per_condition</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_variable_values_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_measurements_for_condition</span> <span class="o">=</span> <span class="mi">0</span>
+
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">_first</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">interval</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span></div>
+        <span class="c1"># TODO: starting the measurement by calling self._on_timer may cause</span>
+        <span class="c1"># two instances of measure() to be called simulataneuously if it includes</span>
+        <span class="c1"># a wait() call. Disabled for now, wait for one time period before first</span>
+        <span class="c1"># call</span>
+        
+        <span class="c1"># self._on_timer() # Initiate the first measurement immediately</span>
+    
+<div class="viewcode-block" id="Experiment.stop"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Stop the measurement in progress</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_finish</span><span class="p">()</span></div>
+
+    
+<div class="viewcode-block" id="Experiment.wait_finished"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.wait_finished">[docs]</a>    <span class="k">def</span> <span class="nf">wait_finished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Wait until the measurement is finished</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">isActive</span><span class="p">():</span>
+            <span class="n">QtGui</span><span class="o">.</span><span class="n">qApp</span><span class="o">.</span><span class="n">processEvents</span><span class="p">()</span></div>
+        
+<div class="viewcode-block" id="Experiment.measure"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.measure">[docs]</a>    <span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">        Called for each measurement sample. The measurement argument is a</span>
+<span class="sd">        :class:`collections.OrderedDict` instance. Upon calling, it has a `time` </span>
+<span class="sd">        item with the time since the start of the measurement, and items for each</span>
+<span class="sd">        of the variables that are varied as conditions.</span>
+<span class="sd">        </span>
+<span class="sd">        The measure method should perform the measurement, and add the results</span>
+<span class="sd">        as items to the measurement object</span>
+<span class="sd">        </span>
+<span class="sd">        The default implementation calls the measure() function that is</span>
+<span class="sd">        specified at the construction of the Experiment object</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span><span class="p">(</span><span class="n">measurement</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="Experiment.plot"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurements</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Called after each measurement in order to plot the measurements so far.</span>
+<span class="sd">        </span>
+<span class="sd">        The measurements argument is a :class:`np.ndarray` structured array, with</span>
+<span class="sd">        fields for each measured variable returned by the :func:`measure`</span>
+<span class="sd">        function; fields for all variables varied by the conditions and a ``time``</span>
+<span class="sd">        field</span>
+<span class="sd">        </span>
+<span class="sd">        The default implementation calls the plot() function(s) that is/are</span>
+<span class="sd">        specified at the construction of the Experiment object</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        
+        <span class="k">for</span> <span class="n">plot_function</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plot</span><span class="p">:</span>
+            <span class="n">plot_function</span><span class="p">(</span><span class="n">measurements</span><span class="p">)</span>        </div>
+
+<div class="viewcode-block" id="Experiment.log_start"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.log_start">[docs]</a>    <span class="k">def</span> <span class="nf">log_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Called after the first measurement to start the logger(s)</span>
+<span class="sd">        </span>
+<span class="sd">        Data is a (1,)-sized :class:`np.ndarray` structured array with the same</span>
+<span class="sd">        fields as passed to the :function:&#39;plot() method, containing the first</span>
+<span class="sd">        measured data. This can be used e.g. to derive the column names to write</span>
+<span class="sd">        to the log file.</span>
+<span class="sd">        </span>
+<span class="sd">        The default implementation calls the logger.start() method for</span>
+<span class="sd">        the logger(s) that is/are specified at the construction of the</span>
+<span class="sd">        Experiment object</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="Experiment.log"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Called after each measurement to log a single measurement</span>
+
+<span class="sd">        Data is a (1,)-sized :class:`np.ndarray` structured array with the same</span>
+<span class="sd">        fields as passed to the :function:&#39;plot() method, containing the last</span>
+<span class="sd">        measured data.</span>
+<span class="sd">        </span>
+<span class="sd">        The default implementation calls the logger.log() method for</span>
+<span class="sd">        the logger(s) that is/are specified at the construction of the</span>
+<span class="sd">        Experiment object</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Experiment.log_finish"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.log_finish">[docs]</a>    <span class="k">def</span> <span class="nf">log_finish</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Called after the last measurement</span>
+<span class="sd">        </span>
+<span class="sd">        The default implementation calls the logger.finish() method for</span>
+<span class="sd">        the logger(s) that is/are specified at the construction of the</span>
+<span class="sd">        Experiment object</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span></div>
+            
+<div class="viewcode-block" id="Experiment.apply_condition"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.apply_condition">[docs]</a>    <span class="k">def</span> <span class="nf">apply_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Called after each change of condition variables, before the measurement</span>
+<span class="sd">        </span>
+<span class="sd">        The default implementation calls the apply_condition function(s) that are</span>
+<span class="sd">        specified at the construction of the Experiment object</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">apply_condition</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_condition</span><span class="p">:</span>
+            <span class="n">apply_condition</span><span class="p">(</span><span class="n">measurement</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Experiment.get_data"><a class="viewcode-back" href="../../experiments.html#experiments.Experiment.get_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns the experiment data so far. The returned object is a</span>
+<span class="sd">        :class:`np.ndarray` structured array, with fields for each</span>
+<span class="sd">        measured variable returned by the :func:`measure` function;</span>
+<span class="sd">        fields for all variables varied by the conditions and a ``time``</span>
+<span class="sd">        field</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">xlab 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Rob Reilink.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

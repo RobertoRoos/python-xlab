@@ -1,0 +1,406 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>LeCroy WaveSurfer WS104 Oscilloscope &#8212; xlab 1.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Mitutoyo USB-ITN Digimatic interface" href="../mitutoyo/usb_itn.html" />
+    <link rel="prev" title="LeCroy HDO6xxx Oscilloscope" href="hdo6xxx.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../mitutoyo/usb_itn.html" title="Mitutoyo USB-ITN Digimatic interface"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hdo6xxx.html" title="LeCroy HDO6xxx Oscilloscope"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../instruments.html" accesskey="U">Instruments module</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="lecroy-wavesurfer-ws104-oscilloscope">
+<h1>LeCroy WaveSurfer WS104 Oscilloscope<a class="headerlink" href="#lecroy-wavesurfer-ws104-oscilloscope" title="Permalink to this headline">¶</a></h1>
+<p>This page describes the API (programmers interface) for this instrument. Information on how to connect to this instrument is given in the documentation of the <a class="reference internal" href="../../instruments.html#module-instruments" title="instruments"><code class="xref py py-mod docutils literal notranslate"><span class="pre">instruments</span></code></a> module</p>
+<dl class="class">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104">
+<em class="property">class </em><code class="descclassname">instruments.manufacturers.lecroy.oscilloscope.</code><code class="descname">WS104</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/lecroy/oscilloscope.html#WS104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.auto_setup">
+<code class="descname">auto_setup</code><span class="sig-paren">(</span><em>channel=None</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.auto_setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs an auto setup on the specified channel, or on all channels
+if no parameter is provided.</p>
+<dl class="docutils">
+<dt>channel: str or None</dt>
+<dd>The channel to apply auto setup on, e.g. ‘C1’. Should be an any of 
+self.channels</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.force_trigger">
+<code class="descname">force_trigger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.force_trigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces the scope to make a single acquisition</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.get_custom_parameter">
+<code class="descname">get_custom_parameter</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.get_custom_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the custom measurement parameter setting as string for the given
+measurement number.</p>
+<p>See set_custom_parameter for details.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.get_time_div">
+<code class="descname">get_time_div</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.get_time_div" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the time per division [s]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.get_trigger_mode">
+<code class="descname">get_trigger_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.get_trigger_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return current trigger mode</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.get_voltage_div">
+<code class="descname">get_voltage_div</code><span class="sig-paren">(</span><em>channel</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.get_voltage_div" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the voltage per division [V]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.read_parameter">
+<code class="descname">read_parameter</code><span class="sig-paren">(</span><em>channel</em>, <em>parameter</em>, <em>require_exact=False</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.read_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a parameter from the waveform</p>
+<dl class="docutils">
+<dt>parameter: str</dt>
+<dd><p class="first">Parameter to be read. A subset of available parameters is
+given below. For the full list, see LECROY X-STREAM OSCILLOSCOPES
+REMOTE CONTROL MANUAL, ‘PARAMETER_VALUE?’ query (page 198).</p>
+<p class="last">Use ‘CUST1’ … ‘CUST8’ for custom parameters defined by
+set_custom_parameter. In this case, the given channel should be None.</p>
+</dd>
+<dt>channel: str</dt>
+<dd>Channel data to use. Should be an any of self.channels</dd>
+<dt>require_exact: bool</dt>
+<dd>if require_exact is False, a ‘less than …’ or ‘greater than …’ reply
+will return the specified value. If True, a ValueError will be raised
+in those cases</dd>
+</dl>
+<p>A ValueError is raised anyway if the result is not in the set {‘OK’, ‘NP’, ‘LT’, ‘GT’}</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AMPL</td>
+<td>Amplitude</td>
+</tr>
+<tr class="row-odd"><td>AREA</td>
+<td>Area</td>
+</tr>
+<tr class="row-even"><td>BASE</td>
+<td>Base</td>
+</tr>
+<tr class="row-odd"><td>CYCL</td>
+<td>Cycles on screen</td>
+</tr>
+<tr class="row-even"><td>DLY</td>
+<td>Delay</td>
+</tr>
+<tr class="row-odd"><td>DDLY</td>
+<td>Delta delay</td>
+</tr>
+<tr class="row-even"><td>DTLEV</td>
+<td>Delta time at level</td>
+</tr>
+<tr class="row-odd"><td>DUR</td>
+<td>duration of acquisition</td>
+</tr>
+<tr class="row-even"><td>DUTY</td>
+<td>duty cycle</td>
+</tr>
+<tr class="row-odd"><td>DULEV</td>
+<td>Duty cycle at level</td>
+</tr>
+<tr class="row-even"><td>EDLEV</td>
+<td>Edges at level</td>
+</tr>
+<tr class="row-odd"><td>FALL82</td>
+<td>Fall time 80 % to 20 %</td>
+</tr>
+<tr class="row-even"><td>FALL</td>
+<td>Fall time 90 % to 10 %</td>
+</tr>
+<tr class="row-odd"><td>FLEV</td>
+<td>Fall at levels</td>
+</tr>
+<tr class="row-even"><td>FRST</td>
+<td>First cursor position</td>
+</tr>
+<tr class="row-odd"><td>FREQ</td>
+<td>Frequency</td>
+</tr>
+<tr class="row-even"><td>HOLDLEV</td>
+<td>Clock to data time</td>
+</tr>
+<tr class="row-odd"><td>LAST</td>
+<td>Last cursor position</td>
+</tr>
+<tr class="row-even"><td>MAX</td>
+<td>Maximum value</td>
+</tr>
+<tr class="row-odd"><td>MEAN</td>
+<td>Mean value</td>
+</tr>
+<tr class="row-even"><td>MEDI</td>
+<td>Median</td>
+</tr>
+<tr class="row-odd"><td>MIN</td>
+<td>Minimum value</td>
+</tr>
+<tr class="row-even"><td>PNTS</td>
+<td>Period</td>
+</tr>
+<tr class="row-odd"><td>NULL</td>
+<td>phase difference</td>
+</tr>
+<tr class="row-even"><td>OVSN</td>
+<td>Overshoot negative</td>
+</tr>
+<tr class="row-odd"><td>OVSP</td>
+<td>Overshoot positive</td>
+</tr>
+<tr class="row-even"><td>PKPK</td>
+<td>Peak to peak</td>
+</tr>
+<tr class="row-odd"><td>PER</td>
+<td>Period</td>
+</tr>
+<tr class="row-even"><td>PHASE</td>
+<td>Phase difference</td>
+</tr>
+<tr class="row-odd"><td>POPATX</td>
+<td>Population of bin at x</td>
+</tr>
+<tr class="row-even"><td>RISE</td>
+<td>Rise time 10% to 90 %</td>
+</tr>
+<tr class="row-odd"><td>RISE28</td>
+<td>Rise 20 % to 80 %</td>
+</tr>
+<tr class="row-even"><td>RLEV</td>
+<td>Rise time at levels</td>
+</tr>
+<tr class="row-odd"><td>RMS</td>
+<td>root mean square</td>
+</tr>
+<tr class="row-even"><td>SETUP</td>
+<td>Data edge to clock edge</td>
+</tr>
+<tr class="row-odd"><td>SDEV</td>
+<td>Standard deviation</td>
+</tr>
+<tr class="row-even"><td>TLEV</td>
+<td>Time at level</td>
+</tr>
+<tr class="row-odd"><td>TOP</td>
+<td>Top</td>
+</tr>
+<tr class="row-even"><td>WID</td>
+<td>Width</td>
+</tr>
+<tr class="row-odd"><td>WIDLV</td>
+<td>Width at level</td>
+</tr>
+<tr class="row-even"><td>XMAX</td>
+<td>Pos of max data value</td>
+</tr>
+<tr class="row-odd"><td>XMIN</td>
+<td>Pos if min data value</td>
+</tr>
+<tr class="row-even"><td>XAPK</td>
+<td>Nth highest hist peak</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.read_waveform">
+<code class="descname">read_waveform</code><span class="sig-paren">(</span><em>trace</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.read_waveform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retreives the acquired waveform</p>
+<dl class="docutils">
+<dt>trace: str</dt>
+<dd>Trace to use. Should be an any of self.channels, F1-F8, TA-TD or M1-M4</dd>
+</dl>
+<p>The returned Wave object is a structure that contains the field as specified
+by the oscilloscope’s ‘TEMPLATE?’ command. Use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">oscilloscope</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;TEMPLATE?&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>to get information on the available data.</p>
+<p>Specifically, the :wave_array_1: field contains the wave data. Additionally,
+a :time: field is added which contains the sample times of the wave data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.set_attenuation">
+<code class="descname">set_attenuation</code><span class="sig-paren">(</span><em>channel</em>, <em>attenuation</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.set_attenuation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the probes attenuation factor for the specified channel</p>
+<dl class="docutils">
+<dt>channel: str</dt>
+<dd>Should be an any of self.channels</dd>
+<dt>attenuation: integer</dt>
+<dd>Should be any of self.attenuation_values</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.set_custom_parameter">
+<code class="descname">set_custom_parameter</code><span class="sig-paren">(</span><em>number</em>, <em>setting</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.set_custom_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the custom measurement parameter specified by number to the given setting</p>
+<p>number: int [1..8]
+setting: string</p>
+<p>The setting value depends includes parameters which depend on the value
+to be measured. This is not properly documented in the 
+‘LECROY X-STREAM OSCILLOSCOPES REMOTE CONTROL MANUAL’. The easiest way
+to find the proper setting string is to configure the desired measurement
+on the oscilloscope and then use get_custom_parameter to find the
+appropriate setting string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.set_offset">
+<code class="descname">set_offset</code><span class="sig-paren">(</span><em>channel</em>, <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.set_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the vertical offset of the specified input channel [V]
+Note: the probe attenuation factor is not taken into account</p>
+<dl class="docutils">
+<dt>channel: str</dt>
+<dd>Should be an any of self.channels</dd>
+<dt>Offset: float [V]</dt>
+<dd>See Operator’s Manual for maximum ranges</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.set_time_div">
+<code class="descname">set_time_div</code><span class="sig-paren">(</span><em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.set_time_div" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the time per division [s], will be rounded to nearest allowed value (1,2,5,10,20…)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.set_trigger">
+<code class="descname">set_trigger</code><span class="sig-paren">(</span><em>mode</em>, <em>source='C1'</em>, <em>coupling='AC'</em>, <em>level=0.0</em>, <em>type='EDGE'</em>, <em>slope='POS'</em>, <em>delay=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.set_trigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the triggering parameters
+mode: any of AUTO, NORM, SINGLE, STOP
+source: any of EX, LINE or self.channels (e.g C1)
+coupling: any of DC, AC, HFREJ, LFREJ
+level: trigger level [V]
+type: currently only EDGE supported
+slope: any of POS, NEG
+delay: trigger delay [s]. Positive values indicate delay, negative values indicate pre-trigger aquisition</p>
+<p>for LINE source, coupling and level are not used (but a valid value must be given)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.lecroy.oscilloscope.WS104.set_voltage_div">
+<code class="descname">set_voltage_div</code><span class="sig-paren">(</span><em>channel</em>, <em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.lecroy.oscilloscope.WS104.set_voltage_div" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the voltage per division [V], will be rounded to the nearest allowed value &gt; 10mV</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="hdo6xxx.html"
+                        title="previous chapter">LeCroy HDO6xxx Oscilloscope</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../mitutoyo/usb_itn.html"
+                        title="next chapter">Mitutoyo USB-ITN Digimatic interface</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/instruments/manufacturers/lecroy/ws104.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../mitutoyo/usb_itn.html" title="Mitutoyo USB-ITN Digimatic interface"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hdo6xxx.html" title="LeCroy HDO6xxx Oscilloscope"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../instruments.html" >Instruments module</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Rob Reilink.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

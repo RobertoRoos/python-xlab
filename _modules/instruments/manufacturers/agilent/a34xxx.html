@@ -1,0 +1,207 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>instruments.manufacturers.agilent.a34xxx &#8212; xlab 1.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for instruments.manufacturers.agilent.a34xxx</h1><div class="highlight"><pre>
+<span></span><span class="c1"># BSD 3-Clause License</span>
+<span class="c1"># </span>
+<span class="c1"># Copyright (c) 2018, DEMCON advanced mechatronics</span>
+<span class="c1"># All rights reserved.</span>
+<span class="c1"># </span>
+<span class="c1"># Redistribution and use in source and binary forms, with or without</span>
+<span class="c1"># modification, are permitted provided that the following conditions are met:</span>
+<span class="c1"># </span>
+<span class="c1"># * Redistributions of source code must retain the above copyright notice, this</span>
+<span class="c1">#   list of conditions and the following disclaimer.</span>
+<span class="c1"># </span>
+<span class="c1"># * Redistributions in binary form must reproduce the above copyright notice,</span>
+<span class="c1">#   this list of conditions and the following disclaimer in the documentation</span>
+<span class="c1">#   and/or other materials provided with the distribution.</span>
+<span class="c1"># </span>
+<span class="c1"># * Neither the name of the copyright holder nor the names of its</span>
+<span class="c1">#   contributors may be used to endorse or promote products derived from</span>
+<span class="c1">#   this software without specific prior written permission.</span>
+<span class="c1"># </span>
+<span class="c1"># THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span>
+<span class="c1"># AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span class="c1"># IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="c1"># DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE</span>
+<span class="c1"># FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<span class="c1"># DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span>
+<span class="c1"># SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="c1"># CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+<span class="c1"># OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="c1"># </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Common code for Agilent / Keysight 34xxx series multimeters</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">...</span> <span class="k">import</span> <span class="n">Instrument</span>
+<span class="kn">from</span> <span class="nn">.common</span> <span class="k">import</span> <span class="n">paramstr</span>
+
+<div class="viewcode-block" id="A34xxx"><a class="viewcode-back" href="../../../../instruments/manufacturers/agilent/a34xxx.html#instruments.manufacturers.agilent.a34xxx.A34xxx">[docs]</a><span class="k">class</span> <span class="nc">A34xxx</span><span class="p">(</span><span class="n">Instrument</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Common parameters used for most measurement functions:</span>
+<span class="sd">    </span>
+<span class="sd">    range: float or str, default &#39;AUTO&#39;</span>
+<span class="sd">      The measurement range, a float or &#39;MIN&#39;, &#39;MAX&#39;, &#39;AUTO&#39;, or &#39;DEF&#39;</span>
+
+<span class="sd">    resolution: float or str, default &#39;DEF&#39;</span>
+<span class="sd">      The measurement resolution, a float or &#39;MIN&#39;, &#39;MAX&#39;, or &#39;DEF&#39;. A higher</span>
+<span class="sd">      resolution results in a higher measurement time</span>
+<span class="sd">      </span>
+<span class="sd">    channel: integer, default 1</span>
+<span class="sd">      Some multi-channel multimeters (e.g. the 34450) support a secondary</span>
+<span class="sd">      display value. Specify channel=2 to use this secondary display</span>
+<span class="sd">      </span>
+<span class="sd">    For range and resolution, the float values &#39;inf&#39; and &#39;-inf&#39; are interpreted</span>
+<span class="sd">    as &#39;MAX&#39; and &#39;MIN&#39;, respectively</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">channels</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="viewcode-block" id="A34xxx.measure_voltage_dc"><a class="viewcode-back" href="../../../../instruments/manufacturers/agilent/a34xxx.html#instruments.manufacturers.agilent.a34xxx.A34xxx.measure_voltage_dc">[docs]</a>    <span class="k">def</span> <span class="nf">measure_voltage_dc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="s1">&#39;AUTO&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;DEF&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="s1">&#39;Measure DC voltage&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span><span class="p">(</span><span class="s1">&#39;VOLTAGE:DC&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="A34xxx.measure_voltage_ac"><a class="viewcode-back" href="../../../../instruments/manufacturers/agilent/a34xxx.html#instruments.manufacturers.agilent.a34xxx.A34xxx.measure_voltage_ac">[docs]</a>    <span class="k">def</span> <span class="nf">measure_voltage_ac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="s1">&#39;AUTO&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;DEF&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="s1">&#39;Measure DC voltage&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span><span class="p">(</span><span class="s1">&#39;VOLTAGE:AC&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span>        </div>
+    
+<div class="viewcode-block" id="A34xxx.measure_current_dc"><a class="viewcode-back" href="../../../../instruments/manufacturers/agilent/a34xxx.html#instruments.manufacturers.agilent.a34xxx.A34xxx.measure_current_dc">[docs]</a>    <span class="k">def</span> <span class="nf">measure_current_dc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="s1">&#39;AUTO&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;DEF&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="s1">&#39;Measure DC current&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span><span class="p">(</span><span class="s1">&#39;CURRENT:DC&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span>        </div>
+        
+<div class="viewcode-block" id="A34xxx.measure_current_ac"><a class="viewcode-back" href="../../../../instruments/manufacturers/agilent/a34xxx.html#instruments.manufacturers.agilent.a34xxx.A34xxx.measure_current_ac">[docs]</a>    <span class="k">def</span> <span class="nf">measure_current_ac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="s1">&#39;AUTO&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;DEF&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="s1">&#39;Measure AC current&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span><span class="p">(</span><span class="s1">&#39;CURRENT:AC&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span>        </div>
+        
+<div class="viewcode-block" id="A34xxx.measure_continuity"><a class="viewcode-back" href="../../../../instruments/manufacturers/agilent/a34xxx.html#instruments.manufacturers.agilent.a34xxx.A34xxx.measure_continuity">[docs]</a>    <span class="k">def</span> <span class="nf">measure_continuity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s1">&#39;Measure continuity&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;MEASURE:CONTINUITY?&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span></div>
+   
+<div class="viewcode-block" id="A34xxx.measure_resistance"><a class="viewcode-back" href="../../../../instruments/manufacturers/agilent/a34xxx.html#instruments.manufacturers.agilent.a34xxx.A34xxx.measure_resistance">[docs]</a>    <span class="k">def</span> <span class="nf">measure_resistance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="s1">&#39;AUTO&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;DEF&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="s1">&#39;Measure resistance (2 wire)&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span><span class="p">(</span><span class="s1">&#39;RESISTANCE&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span>        </div>
+    
+<div class="viewcode-block" id="A34xxx.measure_resistance_4w"><a class="viewcode-back" href="../../../../instruments/manufacturers/agilent/a34xxx.html#instruments.manufacturers.agilent.a34xxx.A34xxx.measure_resistance_4w">[docs]</a>    <span class="k">def</span> <span class="nf">measure_resistance_4w</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="s1">&#39;AUTO&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;DEF&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="s1">&#39;Measure resistance (4 wire)&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span><span class="p">(</span><span class="s1">&#39;FRESISTANCE&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span>        </div>
+    
+<div class="viewcode-block" id="A34xxx.measure_temperature"><a class="viewcode-back" href="../../../../instruments/manufacturers/agilent/a34xxx.html#instruments.manufacturers.agilent.a34xxx.A34xxx.measure_temperature">[docs]</a>    <span class="k">def</span> <span class="nf">measure_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probe_type</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;DEF&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;&#39;</span>
+<span class="sd">        Measure temperature</span>
+<span class="sd">        </span>
+<span class="sd">        probe_type: str</span>
+<span class="sd">          TCouple|RTD|FRTD|THERmistor|DEF</span>
+<span class="sd">        type: str or int</span>
+<span class="sd">          for TCouple:    B|E|J|K|N|R|S|T</span>
+<span class="sd">          for RTD/FRTD:   85|91</span>
+<span class="sd">          for THERMISTOR: 2252|5000|10000</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        
+        <span class="n">options</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">,</span><span class="si">%s</span><span class="s1">,&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">probe_type</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span><span class="p">(</span><span class="s1">&#39;TEMPERATURE&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span></div>
+        
+    <span class="k">def</span> <span class="nf">_measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">channel</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">channel_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">elif</span> <span class="n">channel</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">channel_str</span> <span class="o">=</span> <span class="s1">&#39;SECONDARY:&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid channel number&#39;</span><span class="p">)</span>
+            
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;MEASURE:</span><span class="si">%s%s</span><span class="s1">? </span><span class="si">%s%s</span><span class="s1">,</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">channel_str</span><span class="p">,</span>
+            <span class="n">function</span><span class="p">,</span>
+            <span class="n">options</span><span class="p">,</span>
+            <span class="n">paramstr</span><span class="p">(</span><span class="nb">range</span><span class="p">,</span> <span class="n">stringvalues</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MIN&#39;</span><span class="p">,</span> <span class="s1">&#39;MAX&#39;</span><span class="p">,</span> <span class="s1">&#39;AUTO&#39;</span><span class="p">,</span> <span class="s1">&#39;DEF&#39;</span><span class="p">]),</span>
+            <span class="n">paramstr</span><span class="p">(</span><span class="n">resolution</span><span class="p">,</span> <span class="n">stringvalues</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MIN&#39;</span><span class="p">,</span> <span class="s1">&#39;MAX&#39;</span><span class="p">,</span> <span class="s1">&#39;DEF&#39;</span><span class="p">])</span>
+            <span class="p">),</span> <span class="nb">float</span><span class="p">)</span></div>
+    
+            
+
+<span class="k">class</span> <span class="nc">A34405</span><span class="p">(</span><span class="n">A34xxx</span><span class="p">):</span>
+    <span class="n">id_match</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;Agilent Technologies,34405.?,&#39;</span>
+    <span class="n">channels</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">class</span> <span class="nc">A34450</span><span class="p">(</span><span class="n">A34xxx</span><span class="p">):</span>
+    <span class="n">id_match</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;Agilent Technologies,34450.?,&#39;</span>
+    <span class="n">channels</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">timeout</span> <span class="o">=</span> <span class="mi">4</span>
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Rob Reilink.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

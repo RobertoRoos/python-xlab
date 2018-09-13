@@ -1,0 +1,169 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>TTi PL303 Power Supply &#8212; xlab 1.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Velleman K8090 / VM8090 8-channel relay card" href="../velleman/k8090.html" />
+    <link rel="prev" title="TTi LD400 Electronic DC Load" href="ld400.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../velleman/k8090.html" title="Velleman K8090 / VM8090 8-channel relay card"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ld400.html" title="TTi LD400 Electronic DC Load"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../instruments.html" accesskey="U">Instruments module</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tti-pl303-power-supply">
+<h1>TTi PL303 Power Supply<a class="headerlink" href="#tti-pl303-power-supply" title="Permalink to this headline">¶</a></h1>
+<p>This page describes the API (programmers interface) for this instrument. Information on how to connect to this instrument is given in the documentation of the <a class="reference internal" href="../../instruments.html#module-instruments" title="instruments"><code class="xref py py-mod docutils literal notranslate"><span class="pre">instruments</span></code></a> module</p>
+<dl class="class">
+<dt id="instruments.manufacturers.tti.pl303.PL303">
+<em class="property">class </em><code class="descclassname">instruments.manufacturers.tti.pl303.</code><code class="descname">PL303</code><span class="sig-paren">(</span><em>port</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/pl303.html#PL303"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.pl303.PL303" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="instruments.manufacturers.tti.pl303.PL303.disable_output">
+<code class="descname">disable_output</code><span class="sig-paren">(</span><em>channel</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/pl303.html#PL303.disable_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.pl303.PL303.disable_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable the given channel output</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.tti.pl303.PL303.enable_output">
+<code class="descname">enable_output</code><span class="sig-paren">(</span><em>channel</em>, <em>enable=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/pl303.html#PL303.enable_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.pl303.PL303.enable_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable (enable = True, default) / disable (enable = False) the given channel output</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.tti.pl303.PL303.read_current">
+<code class="descname">read_current</code><span class="sig-paren">(</span><em>channel</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/pl303.html#PL303.read_current"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.pl303.PL303.read_current" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the actual output current [A] of the given channel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.tti.pl303.PL303.read_voltage">
+<code class="descname">read_voltage</code><span class="sig-paren">(</span><em>channel</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/pl303.html#PL303.read_voltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.pl303.PL303.read_voltage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the actual output voltage [V] of the given channel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.tti.pl303.PL303.set_current">
+<code class="descname">set_current</code><span class="sig-paren">(</span><em>channel</em>, <em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/pl303.html#PL303.set_current"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.pl303.PL303.set_current" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the output current of the given channel to current [A]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.tti.pl303.PL303.set_overcurrent">
+<code class="descname">set_overcurrent</code><span class="sig-paren">(</span><em>channel</em>, <em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/pl303.html#PL303.set_overcurrent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.pl303.PL303.set_overcurrent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the over current protection of the given channel to current [A]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.tti.pl303.PL303.set_overvoltage">
+<code class="descname">set_overvoltage</code><span class="sig-paren">(</span><em>channel</em>, <em>voltage</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/pl303.html#PL303.set_overvoltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.pl303.PL303.set_overvoltage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the over voltage protection of the given channel to voltage [V]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.tti.pl303.PL303.set_voltage">
+<code class="descname">set_voltage</code><span class="sig-paren">(</span><em>channel</em>, <em>voltage</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/pl303.html#PL303.set_voltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.pl303.PL303.set_voltage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the output voltage of the given channel to voltage [V]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="instruments.manufacturers.tti.pl303.PL303.trip_reset">
+<code class="descname">trip_reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/pl303.html#PL303.trip_reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.pl303.PL303.trip_reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any trip errors (e.g. over voltage or over current)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ld400.html"
+                        title="previous chapter">TTi LD400 Electronic DC Load</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../velleman/k8090.html"
+                        title="next chapter">Velleman K8090 / VM8090 8-channel relay card</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/instruments/manufacturers/tti/pl303.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../velleman/k8090.html" title="Velleman K8090 / VM8090 8-channel relay card"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ld400.html" title="TTi LD400 Electronic DC Load"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../instruments.html" >Instruments module</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Rob Reilink.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

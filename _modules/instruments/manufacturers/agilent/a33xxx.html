@@ -1,0 +1,244 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>instruments.manufacturers.agilent.a33xxx &#8212; xlab 1.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for instruments.manufacturers.agilent.a33xxx</h1><div class="highlight"><pre>
+<span></span><span class="c1"># BSD 3-Clause License</span>
+<span class="c1"># </span>
+<span class="c1"># Copyright (c) 2018, DEMCON advanced mechatronics</span>
+<span class="c1"># All rights reserved.</span>
+<span class="c1"># </span>
+<span class="c1"># Redistribution and use in source and binary forms, with or without</span>
+<span class="c1"># modification, are permitted provided that the following conditions are met:</span>
+<span class="c1"># </span>
+<span class="c1"># * Redistributions of source code must retain the above copyright notice, this</span>
+<span class="c1">#   list of conditions and the following disclaimer.</span>
+<span class="c1"># </span>
+<span class="c1"># * Redistributions in binary form must reproduce the above copyright notice,</span>
+<span class="c1">#   this list of conditions and the following disclaimer in the documentation</span>
+<span class="c1">#   and/or other materials provided with the distribution.</span>
+<span class="c1"># </span>
+<span class="c1"># * Neither the name of the copyright holder nor the names of its</span>
+<span class="c1">#   contributors may be used to endorse or promote products derived from</span>
+<span class="c1">#   this software without specific prior written permission.</span>
+<span class="c1"># </span>
+<span class="c1"># THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span>
+<span class="c1"># AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span class="c1"># IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="c1"># DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE</span>
+<span class="c1"># FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<span class="c1"># DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span>
+<span class="c1"># SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="c1"># CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+<span class="c1"># OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="c1"># </span>
+<span class="kn">from</span> <span class="nn">...</span> <span class="k">import</span> <span class="n">Instrument</span>
+<span class="kn">from</span> <span class="nn">.common</span> <span class="k">import</span> <span class="n">paramstr</span>
+
+<span class="k">class</span> <span class="nc">A33xxx</span><span class="p">(</span><span class="n">Instrument</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Set the function generator function, frequency [Hz], amplitude [Vpp] and offset</span>
+<span class="sd">        cancel any modulation, enable output</span>
+<span class="sd">        </span>
+<span class="sd">        function: any of: &#39;SIN&#39;, &#39;SQUARE&#39;, &#39;RAMP&#39;, &#39;PULSE&#39;, &#39;NOISE&#39;, &#39;DC&#39;, &#39;USER&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;APPLY:</span><span class="si">%s</span><span class="s1"> </span><span class="si">%f</span><span class="s1">Hz, </span><span class="si">%f</span><span class="s1">Vpp, </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">offset</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">set_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Set the function generator function</span>
+<span class="sd">        </span>
+<span class="sd">        function: any of &#39;SIN&#39;, &#39;SQUARE&#39;, &#39;RAMP&#39;, &#39;PULSE&#39;, &#39;NOISE&#39;, &#39;DC&#39;, &#39;USER&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;FUNCTION </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">function</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">set_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">):</span>
+        <span class="s1">&#39;Set the output frequency [Hz]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;FREQUENCY &#39;</span> <span class="o">+</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">frequency</span><span class="p">))</span>
+        
+    <span class="k">def</span> <span class="nf">set_amplitude_vpp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voltage</span><span class="p">):</span>
+        <span class="s1">&#39;Set the output amplitude [V peak-peak]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;VOLTAGE </span><span class="si">%s</span><span class="s1"> Vpp&#39;</span> <span class="o">%</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">voltage</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">set_amplitude_vrms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voltage</span><span class="p">):</span>
+        <span class="s1">&#39;Set the output amplitude [V rms]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;VOLTAGE </span><span class="si">%s</span><span class="s1"> Vrms&#39;</span> <span class="o">%</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">voltage</span><span class="p">))</span>
+            
+    <span class="k">def</span> <span class="nf">set_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voltage</span><span class="p">):</span>
+        <span class="s1">&#39;Set the output offset [V]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;VOLTAGE:OFFSET &#39;</span> <span class="o">+</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">voltage</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">set_voltage_high</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voltage</span><span class="p">):</span>
+        <span class="s1">&#39;Set the output high level voltage [V]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;VOLTAGE:HIGH &#39;</span> <span class="o">+</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">voltage</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">set_voltage_low</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voltage</span><span class="p">):</span>
+        <span class="s1">&#39;Set the output low level voltage [V]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;VOLTAGE:LOW &#39;</span> <span class="o">+</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">voltage</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">enable_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OUTPUT &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;ON&#39;</span> <span class="k">if</span> <span class="n">enable</span> <span class="k">else</span> <span class="s1">&#39;OFF&#39;</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">disable_output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OUTPUT OFF&#39;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">set_inverted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inverted</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OUTPUT:POLARITY &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;INVERTED&#39;</span> <span class="k">if</span> <span class="n">inverted</span> <span class="k">else</span> <span class="s1">&#39;NORMAL&#39;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">set_normal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OUTPUT:POLARITY NORMAL&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">enable_sync</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OUTPUT:SYNC &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;ON&#39;</span> <span class="k">if</span> <span class="n">enable</span> <span class="k">else</span> <span class="s1">&#39;OFF&#39;</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">disable_sync</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OUTPUT:SYNC OFF&#39;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">set_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">load</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Set the output load. Can be a float [Ohm] or &#39;INF&#39;, &#39;MIN&#39;, &#39;MAX&#39;.</span>
+<span class="sd">        Note: for consistency, a float value of &#39;+inf&#39; corresponds to</span>
+<span class="sd">        &#39;MAX&#39;, and thus not to &#39;INF&#39; </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OUTPUT:LOAD </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> 
+                            <span class="n">paramstr</span><span class="p">(</span><span class="n">load</span><span class="p">,</span> <span class="n">stringvalues</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MIN&#39;</span><span class="p">,</span> <span class="s1">&#39;MAX&#39;</span><span class="p">,</span> <span class="s1">&#39;INF&#39;</span><span class="p">]))</span>
+    
+    <span class="c1">## Function specific commands</span>
+    <span class="k">def</span> <span class="nf">set_square_dutycycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dutycycle</span><span class="p">):</span>
+        <span class="s1">&#39;Set the duty cycle for square wave function [0..1]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;FUNCTION:SQUARE:DCYCLE &#39;</span> <span class="o">+</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">dutycycle</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">set_ramp_symmetry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symmetry</span><span class="p">):</span>
+        <span class="s1">&#39;Set the symmetry for ramp function [0..1]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;FUNCTION:RAMP:SYMMETRY &#39;</span> <span class="o">+</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">symmetry</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+        
+    <span class="k">def</span> <span class="nf">set_period</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period</span><span class="p">):</span>
+        <span class="s1">&#39;Set the period [s], this is the inverse of the frequency&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;PULSE:PERIOD &#39;</span> <span class="o">+</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">period</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">set_pulse_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+        <span class="s1">&#39;Set the pulse width for the pulse function [s]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;FUNCTION:PULSE:WIDTH &#39;</span> <span class="o">+</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">set_pulse_dutycyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dutycycle</span><span class="p">):</span>
+        <span class="s1">&#39;Set the duty cycle for pulse function [0..1]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;FUNCTION:PULSE:DCYCLE &#39;</span> <span class="o">+</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">dutycycle</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+        
+    <span class="k">def</span> <span class="nf">set_pulse_transition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition</span><span class="p">):</span>
+        <span class="s1">&#39;Set the transition time for the pulse function [s]&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;FUNCTION:PULSE:TRANSITION &#39;</span> <span class="o">+</span> <span class="n">paramstr</span><span class="p">(</span><span class="n">transition</span><span class="p">))</span>
+        
+    <span class="c1"># TODO: AM/FM/PM/FSK/PWM/SWEEP/TRIGGER/BURST</span>
+    
+    <span class="c1">## Arbitrary waveform</span>
+    <span class="k">def</span> <span class="nf">load_waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wave</span><span class="p">,</span> <span class="n">activate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Load a waveform specified by wave. Wave is an iterable of floats between</span>
+<span class="sd">        -1.0 and 1.0</span>
+<span class="sd">        </span>
+<span class="sd">        If activate == True (default), select the waveform and select the</span>
+<span class="sd">        &#39;user&#39; function</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        
+        <span class="n">wave_dac</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">8191</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">wave</span><span class="p">])</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;DATA:DAC VOLATILE, &#39;</span> <span class="o">+</span> <span class="n">wave_dac</span><span class="p">)</span> 
+        <span class="k">if</span> <span class="n">activate</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">select_user_waveform</span><span class="p">(</span><span class="s1">&#39;VOLATILE&#39;</span><span class="p">)</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_function</span><span class="p">(</span><span class="s1">&#39;USER&#39;</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="n">ret</span>
+        
+    <span class="k">def</span> <span class="nf">select_user_waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="s1">&#39;Name should be any of EXP_RISE, EXP_FALL, NEG_RAMP, SINC, CARDIAC, VOLATILE&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;FUNCTION:USER &#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+    
+    <span class="c1">## Misc functions</span>
+    <span class="k">def</span> <span class="nf">set_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="s1">&#39;Set the given text on the display. text==None (default) restores normal display&#39;</span>
+        <span class="k">if</span> <span class="n">text</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;DISP:TEXT:CLEAR&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;DISP:TEXT &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">text</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Rob Reilink.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>
