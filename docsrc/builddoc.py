@@ -31,4 +31,11 @@
 import sphinx.cmd.build
 import sys
 sys.path.append('../xlab')
+
+# Dummy PySide to prevent dependency on PySide when generating documentation
+if not 'PySide' in sys.modules:
+    QtCore = None
+    QtQui = None
+    sys.modules['PySide'] = sys.modules['__main__']
+
 sphinx.cmd.build.main(['-b', 'html', '-d', '../_build/doctrees', '.', '../doc'])
