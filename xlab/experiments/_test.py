@@ -34,7 +34,6 @@ import sys
 sys.path.insert(0, '..')
 from experiments import *
 import numpy as np
-
 import time
 t = time.time()
 
@@ -43,16 +42,24 @@ def measure(measurement):
 
     measurement['voltage'] = time.time() - t
     measurement['current'] = (time.time()-t) * 2
-    measurement['yadda'] = 'ï'
-        
-
-            
-
-
+    
+    s = input('Please enter your yadda: ')
+    if s:
+        measurement['yadda'] = s
+        return
+    else:
+        measurement['yadda'] = 'Nada'
+        return False
+    
 conditions = Conditions()
 conditions['supply'] = 1,4,7.5,9
 conditions['frequency'] = np.linspace(100,2000,4)
 
-tst1 = Experiment(measure, Plotter(style = '+-'), CsvLogger(r'c:\tmp\test%s.log' % timestamp()), permutations(conditions), 2)
-
+tst1 = Experiment(
+    measure = measure, 
+    plot = Plotter(style = '+-'), 
+    log = CsvLogger(r'c:\tmp\test%s.log' % timestamp()), 
+    conditions = conditions, 
+    measurements_per_condition = 2,
+)
 tst1.start()
