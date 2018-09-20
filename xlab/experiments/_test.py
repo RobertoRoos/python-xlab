@@ -46,20 +46,15 @@ def measure(measurement):
     s = input('Please enter your yadda: ')
     if s:
         measurement['yadda'] = s
-        return True
+        return
     else:
         measurement['yadda'] = 'Nada'
         return False
     
-
-        
-
-
 conditions = Conditions()
 conditions['supply'] = 1,4,7.5,9
 conditions['frequency'] = np.linspace(100,2000,4)
 
-# tst1 = Experiment(measure, Plotter(style = '+-'), CsvLogger(r'c:\tmp\test%s.log' % timestamp()), itertools.permutations(conditions), 2)
 tst1 = Experiment(
     measure = measure, 
     plot = Plotter(style = '+-'), 
