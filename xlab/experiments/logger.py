@@ -29,6 +29,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
 import numpy as np
+import os.path
 
 class Logger:
     def __init__(self):
@@ -54,7 +55,11 @@ class CsvLogger(Logger):
         
     def start(self, data):
         super().start(data)
-               
+
+        folder = os.path.split(self._filename)[0]
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+            
         self._file = open(self._filename, 'xt', encoding='utf-8')
         columns = data.dtype.names
         print(*columns, file=self._file, sep=self._sep)
