@@ -50,7 +50,9 @@ class Experiment:
     Arguments:
         measurement: function
             The measurement function is called each time interval and will perform
-            the actual measurement
+            the actual measurement. The function may return a boolean value to
+            signal whether the measurement was successful and new conditions may
+            be applied. If no value is returned this will be interpreted as True.
             
         plot: function or sequence of functions
             The plot function(s) is/are called for every time interval, and are
@@ -127,7 +129,7 @@ class Experiment:
             
             # Varying of variables            
             condition_changed = False
-            
+
             if self._measurements_for_condition >= self._measurements_per_condition:
                 self._measurements_for_condition = 0
 
@@ -138,9 +140,6 @@ class Experiment:
                     return
                 
                 condition_changed = True
-
-            self._measurements_for_condition += 1
-
                     
             for variable, value in zip(self._variables, self._variable_values):
                 measurement[variable] = value
@@ -148,7 +147,10 @@ class Experiment:
             if condition_changed:
                 self.apply_condition(measurement)
 
-            self.measure(measurement)
+            result = self.measure(measurement)
+            
+            if result or result is None:
+                self._measurements_for_condition += 1
             
             columns, data = zip(*measurement.items())
                         
@@ -255,7 +257,7 @@ class Experiment:
         The default implementation calls the measure() function that is
         specified at the construction of the Experiment object
         '''
-        self._measure(measurement)
+        return self._measure(measurement)
         
     def plot(self, measurements):
         '''
