@@ -117,11 +117,11 @@ class A34xxx(Instrument):
             
 
 class A34405(A34xxx):
-    id_match = r'Agilent Technologies,34405.?,'
+    id_match = r'.+Technologies,34405.?,'
     channels = 1
 
 class A34450(A34xxx):
-    id_match = r'Agilent Technologies,34450.?,'
+    id_match = r'.+Technologies,34450.?,'
     channels = 2
     timeout = 4
 
