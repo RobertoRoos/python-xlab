@@ -29,5 +29,5 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
 def list_instrument_classes():
-    from .oscilloscope import HDO6xxx, WS104
-    return [HDO6xxx, WS104]
+    from .oscilloscope import HDO6xxx, WSxxx
+    return [HDO6xxx, WSxxx]
