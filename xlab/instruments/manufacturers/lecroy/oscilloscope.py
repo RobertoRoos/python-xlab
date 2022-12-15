@@ -350,12 +350,12 @@ class Oscilloscope(Instrument):
 
 
 class HDO6xxx(Oscilloscope):
-    id_match = r'\*IDN LECROY,HDO6...'
+    id_match = r'\*IDN LECROY,HDO6[0-9A-Z-_]+'
     channels = ['C1', 'C2', 'C3', 'C4']
     attenuation_values = [1, 2, 5, 10, 20, 25, 50, 100, 200, 500, 1000, 10000]
     
 
 class WSxxx(Oscilloscope):
-    id_match = r'\*IDN LECROY,WS[0-9A-Z]+'
+    id_match = r'\*IDN LECROY,WS[0-9A-Z-_]+'
     channels = ['C1', 'C2', 'C3', 'C4']
     attenuation_values = [1, 2, 5, 10, 20, 25, 50, 100, 200, 500, 1000, 10000]
