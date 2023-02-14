@@ -30,7 +30,7 @@
 # 
 import time
 import datetime
-from PySide import QtGui
+from PySide2 import QtGui
 
 def timestamp():
     '''

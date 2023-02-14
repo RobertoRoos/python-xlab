@@ -1,0 +1,4 @@
+pyvisa
+numpy
+PySide2
+pyserial

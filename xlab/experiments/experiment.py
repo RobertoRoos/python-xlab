@@ -32,7 +32,7 @@ import collections.abc
 import collections
 import time
 import numpy as np
-from PySide import QtCore, QtGui
+from PySide2 import QtCore, QtGui
 from .plotter import Plotter
 
 
