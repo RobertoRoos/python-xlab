@@ -33,6 +33,6 @@ Agilent 34xxx Multimeters
 
 .. include :: ../../general.rst
 
-.. autoclass:: instruments.manufacturers.agilent.a34xxx.A34xxx
+.. autoclass:: xlab.instruments.manufacturers.agilent.a34xxx.A34xxx
    :members:
    :inherited-members:

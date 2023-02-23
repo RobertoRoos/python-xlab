@@ -33,6 +33,6 @@ LeCroy WaveSurfer WS104 Oscilloscope
 
 .. include :: ../../general.rst
 
-.. autoclass:: instruments.manufacturers.lecroy.oscilloscope.WS104
+.. autoclass:: xlab.instruments.manufacturers.lecroy.oscilloscope.WSxxx
    :members:
    :inherited-members:

@@ -98,6 +98,7 @@ venv.bak/
 .ropeproject
 
 .idea/
+docsrc/_build/
 
 # mkdocs documentation
 /site

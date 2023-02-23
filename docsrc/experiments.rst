@@ -30,6 +30,6 @@
    
 .. _xlab_experiments:
 
-.. automodule:: experiments
+.. automodule:: xlab.experiments
 
 

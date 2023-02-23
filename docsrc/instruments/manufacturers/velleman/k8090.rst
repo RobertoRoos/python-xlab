@@ -37,6 +37,6 @@ The Velleman K8090 requires the driver to be installed, which is found
 `here <http://www.velleman.eu/downloads/files/downloads/vlktcdc.zip/>`_ 
 
 
-.. autoclass:: instruments.manufacturers.velleman.k8090.K8090
+.. autoclass:: xlab.instruments.manufacturers.velleman.k8090.K8090
    :members:
    :inherited-members:

@@ -1,10 +1,10 @@
 '''
-.. automodule:: instruments.manufacturers.agilent
-.. automodule:: instruments.manufacturers.lecroy
-.. automodule:: instruments.manufacturers.mitutoyo
-.. automodule:: instruments.manufacturers.rohdeschwarz
-.. automodule:: instruments.manufacturers.tti
-.. automodule:: instruments.manufacturers.velleman
+.. automodule:: xlab.instruments.manufacturers.agilent
+.. automodule:: xlab.instruments.manufacturers.lecroy
+.. automodule:: xlab.instruments.manufacturers.mitutoyo
+.. automodule:: xlab.instruments.manufacturers.rohdeschwarz
+.. automodule:: xlab.instruments.manufacturers.tti
+.. automodule:: xlab.instruments.manufacturers.velleman
 '''
 
 

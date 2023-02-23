@@ -33,6 +33,6 @@ Mitutoyo USB-ITN Digimatic interface
 
 .. include :: ../../general.rst
 
-.. autoclass:: instruments.manufacturers.mitutoyo.usb_itn.USB_ITN
+.. autoclass:: xlab.instruments.manufacturers.mitutoyo.usb_itn.USB_ITN
    :members:
    :inherited-members:
