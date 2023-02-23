@@ -30,7 +30,7 @@
 # 
 import time
 import datetime
-from PySide2 import QtGui
+from PySide2 import QtWidgets
 
 def timestamp():
     '''
@@ -47,10 +47,12 @@ def wait(seconds):
         remain = tfinal - time.monotonic()
         if remain < 0:
             break
-        QtGui.qApp.processEvents(maxtime=remain * 1000)
+        app = QtWidgets.QApplication.instance()
+        if app is not None:
+            app.processEvents(maxtime=remain * 1000)
         
 def message(message):
     '''
     Show a message and wait for ok
     '''
-    QtGui.QMessageBox.information(None, 'Message', message)
+    QtWidgets.QMessageBox.information(None, 'Message', message)
