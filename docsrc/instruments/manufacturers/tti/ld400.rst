@@ -33,6 +33,6 @@ TTi LD400 Electronic DC Load
 
 .. include :: ../../general.rst
 
-.. autoclass:: instruments.manufacturers.tti.ld400.LD400
+.. autoclass:: xlab.instruments.manufacturers.tti.ld400.LD400
    :members:
    :inherited-members:

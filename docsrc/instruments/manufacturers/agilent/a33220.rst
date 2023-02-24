@@ -33,6 +33,6 @@ Agilent 33220 Function generator
 
 .. include :: ../../general.rst
 
-.. autoclass:: instruments.manufacturers.agilent.a33220.A33220
+.. autoclass:: xlab.instruments.manufacturers.agilent.a33220.A33220
    :members:
    :inherited-members:

@@ -77,7 +77,7 @@ To be documented
 
 Detailled documentation of xlab.experiments classes
 ---------------------------------------------------
-.. autoclass:: experiments.Experiment
+.. autoclass:: xlab.experiments.Experiment
    :members:
    :inherited-members:
 

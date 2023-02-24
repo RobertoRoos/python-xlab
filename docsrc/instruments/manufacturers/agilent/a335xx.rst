@@ -33,6 +33,6 @@ Agilent 335xx Function generator
 
 .. include :: ../../general.rst
 
-.. autoclass:: instruments.manufacturers.agilent.a335xx.A335xx
+.. autoclass:: xlab.instruments.manufacturers.agilent.a335xx.A335xx
    :members:
    :inherited-members:

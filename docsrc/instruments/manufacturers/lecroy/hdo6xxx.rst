@@ -33,6 +33,6 @@ LeCroy HDO6xxx Oscilloscope
 
 .. include :: ../../general.rst
 
-.. autoclass:: instruments.manufacturers.lecroy.oscilloscope.HDO6xxx
+.. autoclass:: xlab.instruments.manufacturers.lecroy.oscilloscope.HDO6xxx
    :members:
    :inherited-members:

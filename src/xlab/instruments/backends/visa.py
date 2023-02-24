@@ -29,9 +29,9 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
 try:
-    import visa
+    import pyvisa
 except ImportError:
-    visa = None
+    pyvisa = None
 
     import warnings
     warnings.warn('PyVisa module could not be imported. VISA instruments are not available')
@@ -79,11 +79,11 @@ class DummyResourceManager:
 
 class Visa:
     def __init__(self):
-        if visa is None:
+        if pyvisa is None:
             # PyVisa not available
             self.resource_manager = DummyResourceManager()
         else:
-            self.resource_manager = visa.ResourceManager()
+            self.resource_manager = pyvisa.ResourceManager()
         
     def list(self):
         return self.resource_manager.list_resources()
