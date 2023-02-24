@@ -6,13 +6,16 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Mitutoyo USB-ITN Digimatic interface &#8212; xlab 1.0 documentation</title>
+    <title>Mitutoyo USB-ITN Digimatic interface &#8212; xlab 0.0.2 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Rohde &amp; Schwarz SML01 Signal Generator" href="../rohdeschwarz/sml01.html" />
@@ -33,7 +36,7 @@
         <li class="right" >
           <a href="../lecroy/ws104.html" title="LeCroy WaveSurfer WS104 Oscilloscope"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../instruments.html" accesskey="U">Instruments module</a> &#187;</li> 
       </ul>
     </div>  
@@ -45,16 +48,16 @@
             
   <div class="section" id="mitutoyo-usb-itn-digimatic-interface">
 <h1>Mitutoyo USB-ITN Digimatic interface<a class="headerlink" href="#mitutoyo-usb-itn-digimatic-interface" title="Permalink to this headline">¶</a></h1>
-<p>This page describes the API (programmers interface) for this instrument. Information on how to connect to this instrument is given in the documentation of the <a class="reference internal" href="../../instruments.html#module-instruments" title="instruments"><code class="xref py py-mod docutils literal notranslate"><span class="pre">instruments</span></code></a> module</p>
+<p>This page describes the API (programmers interface) for this instrument. Information on how to connect to this instrument is given in the documentation of the <code class="xref py py-mod docutils literal notranslate"><span class="pre">instruments</span></code> module</p>
 <dl class="class">
-<dt id="instruments.manufacturers.mitutoyo.usb_itn.USB_ITN">
-<em class="property">class </em><code class="descclassname">instruments.manufacturers.mitutoyo.usb_itn.</code><code class="descname">USB_ITN</code><span class="sig-paren">(</span><em>port</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/mitutoyo/usb_itn.html#USB_ITN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.mitutoyo.usb_itn.USB_ITN" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.mitutoyo.usb_itn.USB_ITN">
+<em class="property">class </em><code class="descclassname">xlab.instruments.manufacturers.mitutoyo.usb_itn.</code><code class="descname">USB_ITN</code><span class="sig-paren">(</span><em>port</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/mitutoyo/usb_itn.html#USB_ITN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.mitutoyo.usb_itn.USB_ITN" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface for the USB-ITN USB-to-Digimatic (Mitutoyo) interface. Requires
 driver to be installed; see the 
 <a class="reference external" href="https://www.mitutoyo.co.jp/eng/support/service/manual/pdf/99MAM024A1.pdf">USB-ITPAK User’s manual section 2.2</a></p>
 <dl class="method">
-<dt id="instruments.manufacturers.mitutoyo.usb_itn.USB_ITN.read">
-<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/mitutoyo/usb_itn.html#USB_ITN.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.mitutoyo.usb_itn.USB_ITN.read" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.mitutoyo.usb_itn.USB_ITN.read">
+<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/mitutoyo/usb_itn.html#USB_ITN.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.mitutoyo.usb_itn.USB_ITN.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads the Digimatic sensor. Returns float.</p>
 <p>Raises TimeoutError upon communication timeout (e.g. cable not connected)
 or IOError upon reception of an invalid response</p>
@@ -114,13 +117,13 @@ or IOError upon reception of an invalid response</p>
         <li class="right" >
           <a href="../lecroy/ws104.html" title="LeCroy WaveSurfer WS104 Oscilloscope"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../instruments.html" >Instruments module</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, Rob Reilink.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.6.
     </div>
   </body>
 </html>

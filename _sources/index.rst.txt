@@ -36,6 +36,10 @@
 Welcome to xlab's documentation!
 ================================
 
+.. warning::
+   ``xlab`` has not been seriously maintained since 2019 and should no longer be used.
+   Try `PyMeasure <https://pymeasure.readthedocs.io/en/latest/>`_ instead.
+
 Contents:
 
 .. toctree::

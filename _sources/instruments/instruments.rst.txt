@@ -1,7 +1,7 @@
 
 .. _xlab_instruments:
 
-.. automodule:: instruments
+.. automodule:: xlab.instruments
 
     
 Supported instruments

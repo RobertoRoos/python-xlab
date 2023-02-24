@@ -33,6 +33,6 @@ TTi PL303 Power Supply
 
 .. include :: ../../general.rst
 
-.. autoclass:: instruments.manufacturers.tti.pl303.PL303
+.. autoclass:: xlab.instruments.manufacturers.tti.pl303.PL303
    :members:
    :inherited-members:

@@ -6,13 +6,16 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Experiments module &#8212; xlab 1.0 documentation</title>
+    <title>Experiments module &#8212; xlab 0.0.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="License" href="license.html" />
@@ -33,7 +36,7 @@
         <li class="right" >
           <a href="instruments/manufacturers/velleman/k8090.html" title="Velleman K8090 / VM8090 8-channel relay card"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">xlab 1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">xlab 0.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -42,7 +45,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <span class="target" id="module-experiments"><span id="xlab-experiments"></span></span><div class="section" id="experiments-module">
+  <span class="target" id="module-xlab.experiments"><span id="xlab-experiments"></span></span><div class="section" id="experiments-module">
 <h1>Experiments module<a class="headerlink" href="#experiments-module" title="Permalink to this headline">¶</a></h1>
 <p>The xlab.experiments module facilitates performing experiments. It has facilities for
 aquiring, plotting, and logging of sequences of measurements. Furthermore, it
@@ -82,8 +85,8 @@ Alternatively, the sampling interval can be specified in seconds, e.g. <code cla
 <div class="section" id="detailled-documentation-of-xlab-experiments-classes">
 <h2>Detailled documentation of xlab.experiments classes<a class="headerlink" href="#detailled-documentation-of-xlab-experiments-classes" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="experiments.Experiment">
-<em class="property">class </em><code class="descclassname">experiments.</code><code class="descname">Experiment</code><span class="sig-paren">(</span><em>measure</em>, <em>plot=None</em>, <em>log=()</em>, <em>conditions=()</em>, <em>measurements_per_condition=None</em>, <em>apply_condition=()</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment">
+<em class="property">class </em><code class="descclassname">xlab.experiments.</code><code class="descname">Experiment</code><span class="sig-paren">(</span><em>measure</em>, <em>plot=None</em>, <em>log=()</em>, <em>conditions=()</em>, <em>measurements_per_condition=None</em>, <em>apply_condition=()</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class enables performing an experiment. It has the following
 features:</p>
 <p>An experiment consists of a series of measurements. A measurement
@@ -95,7 +98,9 @@ of values for input variables that are varied.</p>
 <dd><dl class="first docutils">
 <dt>measurement: function</dt>
 <dd>The measurement function is called each time interval and will perform
-the actual measurement</dd>
+the actual measurement. The function may return a boolean value to
+signal whether the measurement was successful and new conditions may
+be applied. If no value is returned this will be interpreted as True.</dd>
 <dt>plot: function or sequence of functions</dt>
 <dd><p class="first">The plot function(s) is/are called for every time interval, and are
 passed all measurements performed up to now. This function can be used
@@ -121,26 +126,26 @@ before the next measurement function.</dd>
 </dd>
 </dl>
 <dl class="method">
-<dt id="experiments.Experiment.apply_condition">
-<code class="descname">apply_condition</code><span class="sig-paren">(</span><em>measurement</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.apply_condition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.apply_condition" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.apply_condition">
+<code class="descname">apply_condition</code><span class="sig-paren">(</span><em>measurement</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.apply_condition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.apply_condition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called after each change of condition variables, before the measurement</p>
 <p>The default implementation calls the apply_condition function(s) that are
 specified at the construction of the Experiment object</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="experiments.Experiment.get_data">
-<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.get_data" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.get_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the experiment data so far. The returned object is a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code> structured array, with fields for each
-measured variable returned by the <a class="reference internal" href="#experiments.Experiment.measure" title="experiments.Experiment.measure"><code class="xref py py-func docutils literal notranslate"><span class="pre">measure()</span></code></a> function;
+measured variable returned by the <a class="reference internal" href="#xlab.experiments.Experiment.measure" title="xlab.experiments.Experiment.measure"><code class="xref py py-func docutils literal notranslate"><span class="pre">measure()</span></code></a> function;
 fields for all variables varied by the conditions and a <code class="docutils literal notranslate"><span class="pre">time</span></code>
 field</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="experiments.Experiment.log">
-<code class="descname">log</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.log" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.log">
+<code class="descname">log</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.log" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called after each measurement to log a single measurement</p>
 <p>Data is a (1,)-sized <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code> structured array with the same
 fields as passed to the :function:’plot() method, containing the last
@@ -151,8 +156,8 @@ Experiment object</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="experiments.Experiment.log_finish">
-<code class="descname">log_finish</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.log_finish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.log_finish" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.log_finish">
+<code class="descname">log_finish</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.log_finish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.log_finish" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called after the last measurement</p>
 <p>The default implementation calls the logger.finish() method for
 the logger(s) that is/are specified at the construction of the
@@ -160,8 +165,8 @@ Experiment object</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="experiments.Experiment.log_start">
-<code class="descname">log_start</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.log_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.log_start" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.log_start">
+<code class="descname">log_start</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.log_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.log_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called after the first measurement to start the logger(s)</p>
 <p>Data is a (1,)-sized <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code> structured array with the same
 fields as passed to the :function:’plot() method, containing the first
@@ -173,8 +178,8 @@ Experiment object</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="experiments.Experiment.measure">
-<code class="descname">measure</code><span class="sig-paren">(</span><em>measurement</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.measure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.measure" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.measure">
+<code class="descname">measure</code><span class="sig-paren">(</span><em>measurement</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.measure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.measure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called for each measurement sample. The measurement argument is a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code> instance. Upon calling, it has a <cite>time</cite> 
 item with the time since the start of the measurement, and items for each
@@ -186,11 +191,11 @@ specified at the construction of the Experiment object</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="experiments.Experiment.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>measurements</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.plot" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>measurements</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called after each measurement in order to plot the measurements so far.</p>
 <p>The measurements argument is a <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code> structured array, with
-fields for each measured variable returned by the <a class="reference internal" href="#experiments.Experiment.measure" title="experiments.Experiment.measure"><code class="xref py py-func docutils literal notranslate"><span class="pre">measure()</span></code></a>
+fields for each measured variable returned by the <a class="reference internal" href="#xlab.experiments.Experiment.measure" title="xlab.experiments.Experiment.measure"><code class="xref py py-func docutils literal notranslate"><span class="pre">measure()</span></code></a>
 function; fields for all variables varied by the conditions and a <code class="docutils literal notranslate"><span class="pre">time</span></code>
 field</p>
 <p>The default implementation calls the plot() function(s) that is/are
@@ -198,14 +203,14 @@ specified at the construction of the Experiment object</p>
 </dd></dl>
 
 <dl class="staticmethod">
-<dt id="experiments.Experiment.promote_datatype">
-<em class="property">static </em><code class="descname">promote_datatype</code><span class="sig-paren">(</span><em>dtype</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.promote_datatype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.promote_datatype" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.promote_datatype">
+<em class="property">static </em><code class="descname">promote_datatype</code><span class="sig-paren">(</span><em>dtype</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.promote_datatype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.promote_datatype" title="Permalink to this definition">¶</a></dt>
 <dd><p>If datatype is int (e.g. 0) promote to float</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="experiments.Experiment.start">
-<code class="descname">start</code><span class="sig-paren">(</span><em>interval=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.start" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.start">
+<code class="descname">start</code><span class="sig-paren">(</span><em>interval=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the experiment using the specified sampling interval (in seconds)
 If a measurement takes longer than the specified interval, measurements
 are performed at the maximum possible rate</p>
@@ -214,14 +219,14 @@ rate</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="experiments.Experiment.stop">
-<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.stop" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop the measurement in progress</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="experiments.Experiment.wait_finished">
-<code class="descname">wait_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiments/experiment.html#Experiment.wait_finished"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#experiments.Experiment.wait_finished" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.experiments.Experiment.wait_finished">
+<code class="descname">wait_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/xlab/experiments/experiment.html#Experiment.wait_finished"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.experiments.Experiment.wait_finished" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wait until the measurement is finished</p>
 </dd></dl>
 
@@ -236,7 +241,7 @@ rate</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
+  <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Experiments module</a><ul>
 <li><a class="reference internal" href="#conducting-an-experiment">Conducting an experiment</a></li>
@@ -292,12 +297,12 @@ rate</p>
         <li class="right" >
           <a href="instruments/manufacturers/velleman/k8090.html" title="Velleman K8090 / VM8090 8-channel relay card"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">xlab 1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">xlab 0.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, Rob Reilink.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.6.
     </div>
   </body>
 </html>

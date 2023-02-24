@@ -6,27 +6,30 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>instruments.manufacturers.rohdeschwarz.sml01 &#8212; xlab 1.0 documentation</title>
-    <link rel="stylesheet" href="../../../../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../search.html" /> 
+    <title>xlab.instruments.manufacturers.rohdeschwarz.sml01 &#8212; xlab 0.0.2 documentation</title>
+    <link rel="stylesheet" href="../../../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../../../genindex.html" title="General Index"
+          <a href="../../../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../../../py-modindex.html" title="Python Module Index"
+          <a href="../../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../../index.html">xlab 1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -35,26 +38,26 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>Source code for instruments.manufacturers.rohdeschwarz.sml01</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">...</span> <span class="k">import</span> <span class="n">Instrument</span>
+  <h1>Source code for xlab.instruments.manufacturers.rohdeschwarz.sml01</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">...</span> <span class="kn">import</span> <span class="n">Instrument</span>
 
-<div class="viewcode-block" id="SML01"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01">[docs]</a><span class="k">class</span> <span class="nc">SML01</span><span class="p">(</span><span class="n">Instrument</span><span class="p">):</span>
+<div class="viewcode-block" id="SML01"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01">[docs]</a><span class="k">class</span> <span class="nc">SML01</span><span class="p">(</span><span class="n">Instrument</span><span class="p">):</span>
     <span class="n">id_match</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;ROHDE&amp;SCHWARZ,SML01,&#39;</span>
     
     <span class="c1"># RF output functions</span>
-<div class="viewcode-block" id="SML01.set_frequency"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.set_frequency">[docs]</a>    <span class="k">def</span> <span class="nf">set_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">):</span>
+<div class="viewcode-block" id="SML01.set_frequency"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.set_frequency">[docs]</a>    <span class="k">def</span> <span class="nf">set_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">):</span>
         <span class="s1">&#39;Set a fixed output frequency [Hz] for the RF output&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;:SOURCE:FREQUENCY </span><span class="si">%.2f</span><span class="s1"> Hz&#39;</span> <span class="o">%</span> <span class="n">frequency</span><span class="p">)</span></div>
     
-<div class="viewcode-block" id="SML01.set_power"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.set_power">[docs]</a>    <span class="k">def</span> <span class="nf">set_power</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
+<div class="viewcode-block" id="SML01.set_power"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.set_power">[docs]</a>    <span class="k">def</span> <span class="nf">set_power</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
         <span class="s1">&#39;Set a fixed power [dBm] for the RF output&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;:SOURCE:POWER </span><span class="si">%.2f</span><span class="s1"> dBm&#39;</span> <span class="o">%</span> <span class="n">power</span><span class="p">)</span></div>
     
-<div class="viewcode-block" id="SML01.enable"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.enable">[docs]</a>    <span class="k">def</span> <span class="nf">enable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="SML01.enable"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.enable">[docs]</a>    <span class="k">def</span> <span class="nf">enable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="s1">&#39;Enable/disable the RF output&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;:OUTPUT1:STATE &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;ON&#39;</span> <span class="k">if</span> <span class="n">enable</span> <span class="k">else</span> <span class="s1">&#39;OFF&#39;</span><span class="p">))</span></div>
     
-<div class="viewcode-block" id="SML01.disable"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.disable">[docs]</a>    <span class="k">def</span> <span class="nf">disable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SML01.disable"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.disable">[docs]</a>    <span class="k">def</span> <span class="nf">disable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="s1">&#39;Disable the RF output&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">enable</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
 
@@ -71,8 +74,8 @@
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;:SOURCE:CORRECTION:CSET:SELECT?&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">name</span>
 
 
-<div class="viewcode-block" id="SML01.set_correction_table"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.set_correction_table">[docs]</a>    <span class="k">def</span> <span class="nf">set_correction_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="SML01.set_correction_table"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.set_correction_table">[docs]</a>    <span class="k">def</span> <span class="nf">set_correction_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Program a correction table</span>
 <span class="sd">        </span>
 <span class="sd">        id is the correction table number, in range [0..9]</span>
@@ -92,8 +95,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;:SOURCE:CORRECTION:CSET:DATA:POWER &#39;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">power_list</span><span class="p">))</span></div>
     
     
-<div class="viewcode-block" id="SML01.get_correction_table"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.get_correction_table">[docs]</a>    <span class="k">def</span> <span class="nf">get_correction_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="SML01.get_correction_table"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.get_correction_table">[docs]</a>    <span class="k">def</span> <span class="nf">get_correction_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Read a correction table</span>
 <span class="sd">        </span>
 <span class="sd">        id is the correction table number, in range [0..9]</span>
@@ -108,8 +111,8 @@
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;:SOURCE:CORRECTION:CSET:DATA:FREQUENCY?&#39;</span><span class="p">,</span> <span class="n">parse_float_list</span><span class="p">),</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;:SOURCE:CORRECTION:CSET:DATA:POWER?&#39;</span><span class="p">,</span> <span class="n">parse_float_list</span><span class="p">))</span></div>
         
-<div class="viewcode-block" id="SML01.enable_correction"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.enable_correction">[docs]</a>    <span class="k">def</span> <span class="nf">enable_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="SML01.enable_correction"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.enable_correction">[docs]</a>    <span class="k">def</span> <span class="nf">enable_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Enable level correction</span>
 <span class="sd">        </span>
 <span class="sd">        id is the correction table number, in range [0..9]</span>
@@ -118,21 +121,21 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_select_correction_table</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;:SOURCE:CORRECTION:STATE ON&#39;</span><span class="p">)</span></div>
     
-<div class="viewcode-block" id="SML01.disable_correction"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.disable_correction">[docs]</a>    <span class="k">def</span> <span class="nf">disable_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SML01.disable_correction"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.disable_correction">[docs]</a>    <span class="k">def</span> <span class="nf">disable_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="s1">&#39;Disable level correction&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;:SOURCE:CORRECTION:STATE OFF&#39;</span><span class="p">)</span></div>
 
             
-<div class="viewcode-block" id="SML01.enable_am_modulation"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.enable_am_modulation">[docs]</a>    <span class="k">def</span> <span class="nf">enable_am_modulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="SML01.enable_am_modulation"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.enable_am_modulation">[docs]</a>    <span class="k">def</span> <span class="nf">enable_am_modulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="s1">&#39;Enable or disable AM modulation of the RF output&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;:SOURCE:AM:STATE &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;ON&#39;</span> <span class="k">if</span> <span class="n">enable</span> <span class="k">else</span> <span class="s1">&#39;OFF&#39;</span><span class="p">))</span></div>
     
-<div class="viewcode-block" id="SML01.disable_am_modulation"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.disable_am_modulation">[docs]</a>    <span class="k">def</span> <span class="nf">disable_am_modulation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SML01.disable_am_modulation"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.disable_am_modulation">[docs]</a>    <span class="k">def</span> <span class="nf">disable_am_modulation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="s1">&#39;Disable AM modulation of the RF output&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">enable_am_modulation</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
     
-<div class="viewcode-block" id="SML01.set_am_source"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.set_am_source">[docs]</a>    <span class="k">def</span> <span class="nf">set_am_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="SML01.set_am_source"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.set_am_source">[docs]</a>    <span class="k">def</span> <span class="nf">set_am_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Set AM modulation source for the RF output</span>
 <span class="sd">        </span>
 <span class="sd">        source must be any of {INT|EXT|TTONE}</span>
@@ -144,15 +147,15 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Source must be any of </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sourcevalues</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;:SOURCE:AM:SOURCE&#39;</span><span class="p">)</span></div>
         
-<div class="viewcode-block" id="SML01.set_am_depth"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.set_am_depth">[docs]</a>    <span class="k">def</span> <span class="nf">set_am_depth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Set AM modulation depth [0..1]&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="SML01.set_am_depth"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.set_am_depth">[docs]</a>    <span class="k">def</span> <span class="nf">set_am_depth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Set AM modulation depth [0..1]&#39;&#39;&#39;</span>
         <span class="n">depth</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">depth</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">depth</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;AM modulation depth must be between [0..1]&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;:SOURCE:AM:DEPTH </span><span class="si">%.3f</span><span class="s1"> PCT&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">depth</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="SML01.set_am_frequency"><a class="viewcode-back" href="../../../../instruments/manufacturers/rohdeschwarz/sml01.html#instruments.manufacturers.rohdeschwarz.sml01.SML01.set_am_frequency">[docs]</a>    <span class="k">def</span> <span class="nf">set_am_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Set AM modulation frequency [Hz]&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="SML01.set_am_frequency"><a class="viewcode-back" href="../../../../../instruments/manufacturers/rohdeschwarz/sml01.html#xlab.instruments.manufacturers.rohdeschwarz.sml01.SML01.set_am_frequency">[docs]</a>    <span class="k">def</span> <span class="nf">set_am_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Set AM modulation frequency [Hz]&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;:SOURCE:AM:INTERNAL:FREQUENCY </span><span class="si">%.3f</span><span class="s1"> Hz&#39;</span> <span class="o">%</span> <span class="n">frequency</span><span class="p">)</span></div></div>
         
         
@@ -172,7 +175,7 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../../../../search.html" method="get">
+    <form class="search" action="../../../../../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -189,18 +192,18 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../../../genindex.html" title="General Index"
+          <a href="../../../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../../../py-modindex.html" title="Python Module Index"
+          <a href="../../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../../index.html">xlab 1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, Rob Reilink.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.6.
     </div>
   </body>
 </html>

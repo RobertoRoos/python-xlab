@@ -6,27 +6,30 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>instruments.manufacturers.tti.pl303 &#8212; xlab 1.0 documentation</title>
-    <link rel="stylesheet" href="../../../../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../search.html" /> 
+    <title>xlab.instruments.manufacturers.tti.pl303 &#8212; xlab 0.0.2 documentation</title>
+    <link rel="stylesheet" href="../../../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../../../genindex.html" title="General Index"
+          <a href="../../../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../../../py-modindex.html" title="Python Module Index"
+          <a href="../../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../../index.html">xlab 1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -35,7 +38,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>Source code for instruments.manufacturers.tti.pl303</h1><div class="highlight"><pre>
+  <h1>Source code for xlab.instruments.manufacturers.tti.pl303</h1><div class="highlight"><pre>
 <span></span><span class="c1"># BSD 3-Clause License</span>
 <span class="c1"># </span>
 <span class="c1"># Copyright (c) 2018, DEMCON advanced mechatronics</span>
@@ -68,9 +71,9 @@
 <span class="c1"># </span>
 <span class="kn">import</span> <span class="nn">serial</span>
 
-<div class="viewcode-block" id="PL303"><a class="viewcode-back" href="../../../../instruments/manufacturers/tti/pl303.html#instruments.manufacturers.tti.pl303.PL303">[docs]</a><span class="k">class</span> <span class="nc">PL303</span><span class="p">:</span>
+<div class="viewcode-block" id="PL303"><a class="viewcode-back" href="../../../../../instruments/manufacturers/tti/pl303.html#xlab.instruments.manufacturers.tti.pl303.PL303">[docs]</a><span class="k">class</span> <span class="nc">PL303</span><span class="p">:</span>
     <span class="n">id_match</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;.*DC Power Supply$&#39;</span> <span class="c1">#r&#39;New PL DC Power Supply$&#39;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_serial</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">port</span><span class="p">),</span> <span class="mi">19200</span><span class="p">,</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
@@ -81,41 +84,41 @@
         <span class="n">reply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_serial</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">parse</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PL303.set_voltage"><a class="viewcode-back" href="../../../../instruments/manufacturers/tti/pl303.html#instruments.manufacturers.tti.pl303.PL303.set_voltage">[docs]</a>    <span class="k">def</span> <span class="nf">set_voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">voltage</span><span class="p">):</span>
+<div class="viewcode-block" id="PL303.set_voltage"><a class="viewcode-back" href="../../../../../instruments/manufacturers/tti/pl303.html#xlab.instruments.manufacturers.tti.pl303.PL303.set_voltage">[docs]</a>    <span class="k">def</span> <span class="nf">set_voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">voltage</span><span class="p">):</span>
         <span class="s1">&#39;Set the output voltage of the given channel to voltage [V]&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;V</span><span class="si">%d</span><span class="s1"> </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">voltage</span><span class="p">))</span></div>
     
-<div class="viewcode-block" id="PL303.set_overvoltage"><a class="viewcode-back" href="../../../../instruments/manufacturers/tti/pl303.html#instruments.manufacturers.tti.pl303.PL303.set_overvoltage">[docs]</a>    <span class="k">def</span> <span class="nf">set_overvoltage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">voltage</span><span class="p">):</span>
+<div class="viewcode-block" id="PL303.set_overvoltage"><a class="viewcode-back" href="../../../../../instruments/manufacturers/tti/pl303.html#xlab.instruments.manufacturers.tti.pl303.PL303.set_overvoltage">[docs]</a>    <span class="k">def</span> <span class="nf">set_overvoltage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">voltage</span><span class="p">):</span>
         <span class="s1">&#39;Set the over voltage protection of the given channel to voltage [V]&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OVP</span><span class="si">%d</span><span class="s1"> </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">voltage</span><span class="p">))</span></div>
         
-<div class="viewcode-block" id="PL303.read_voltage"><a class="viewcode-back" href="../../../../instruments/manufacturers/tti/pl303.html#instruments.manufacturers.tti.pl303.PL303.read_voltage">[docs]</a>    <span class="k">def</span> <span class="nf">read_voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+<div class="viewcode-block" id="PL303.read_voltage"><a class="viewcode-back" href="../../../../../instruments/manufacturers/tti/pl303.html#xlab.instruments.manufacturers.tti.pl303.PL303.read_voltage">[docs]</a>    <span class="k">def</span> <span class="nf">read_voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
         <span class="s1">&#39;Read the actual output voltage [V] of the given channel&#39;</span>
         <span class="n">parse</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;V</span><span class="si">%d</span><span class="s1">O?&#39;</span> <span class="o">%</span> <span class="n">channel</span><span class="p">,</span> <span class="n">parse</span><span class="p">)</span></div>
     
-<div class="viewcode-block" id="PL303.set_current"><a class="viewcode-back" href="../../../../instruments/manufacturers/tti/pl303.html#instruments.manufacturers.tti.pl303.PL303.set_current">[docs]</a>    <span class="k">def</span> <span class="nf">set_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
+<div class="viewcode-block" id="PL303.set_current"><a class="viewcode-back" href="../../../../../instruments/manufacturers/tti/pl303.html#xlab.instruments.manufacturers.tti.pl303.PL303.set_current">[docs]</a>    <span class="k">def</span> <span class="nf">set_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
         <span class="s1">&#39;Set the output current of the given channel to current [A]&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;I</span><span class="si">%d</span><span class="s1"> </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">current</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="PL303.set_overcurrent"><a class="viewcode-back" href="../../../../instruments/manufacturers/tti/pl303.html#instruments.manufacturers.tti.pl303.PL303.set_overcurrent">[docs]</a>    <span class="k">def</span> <span class="nf">set_overcurrent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
+<div class="viewcode-block" id="PL303.set_overcurrent"><a class="viewcode-back" href="../../../../../instruments/manufacturers/tti/pl303.html#xlab.instruments.manufacturers.tti.pl303.PL303.set_overcurrent">[docs]</a>    <span class="k">def</span> <span class="nf">set_overcurrent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
         <span class="s1">&#39;Set the over current protection of the given channel to current [A]&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OCP</span><span class="si">%d</span><span class="s1"> </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">current</span><span class="p">))</span></div>
         
-<div class="viewcode-block" id="PL303.read_current"><a class="viewcode-back" href="../../../../instruments/manufacturers/tti/pl303.html#instruments.manufacturers.tti.pl303.PL303.read_current">[docs]</a>    <span class="k">def</span> <span class="nf">read_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+<div class="viewcode-block" id="PL303.read_current"><a class="viewcode-back" href="../../../../../instruments/manufacturers/tti/pl303.html#xlab.instruments.manufacturers.tti.pl303.PL303.read_current">[docs]</a>    <span class="k">def</span> <span class="nf">read_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
         <span class="s1">&#39;Read the actual output current [A] of the given channel&#39;</span>
         <span class="n">parse</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;I</span><span class="si">%d</span><span class="s1">O?&#39;</span> <span class="o">%</span> <span class="n">channel</span><span class="p">,</span> <span class="n">parse</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PL303.enable_output"><a class="viewcode-back" href="../../../../instruments/manufacturers/tti/pl303.html#instruments.manufacturers.tti.pl303.PL303.enable_output">[docs]</a>    <span class="k">def</span> <span class="nf">enable_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="PL303.enable_output"><a class="viewcode-back" href="../../../../../instruments/manufacturers/tti/pl303.html#xlab.instruments.manufacturers.tti.pl303.PL303.enable_output">[docs]</a>    <span class="k">def</span> <span class="nf">enable_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="s1">&#39;Enable (enable = True, default) / disable (enable = False) the given channel output&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OP</span><span class="si">%d</span><span class="s1"> </span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">enable</span><span class="p">)))</span></div>
     
-<div class="viewcode-block" id="PL303.disable_output"><a class="viewcode-back" href="../../../../instruments/manufacturers/tti/pl303.html#instruments.manufacturers.tti.pl303.PL303.disable_output">[docs]</a>    <span class="k">def</span> <span class="nf">disable_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+<div class="viewcode-block" id="PL303.disable_output"><a class="viewcode-back" href="../../../../../instruments/manufacturers/tti/pl303.html#xlab.instruments.manufacturers.tti.pl303.PL303.disable_output">[docs]</a>    <span class="k">def</span> <span class="nf">disable_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
         <span class="s1">&#39;Disable the given channel output&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;OP</span><span class="si">%d</span><span class="s1"> 0&#39;</span><span class="o">%</span> <span class="n">channel</span><span class="p">)</span></div>
         
-<div class="viewcode-block" id="PL303.trip_reset"><a class="viewcode-back" href="../../../../instruments/manufacturers/tti/pl303.html#instruments.manufacturers.tti.pl303.PL303.trip_reset">[docs]</a>    <span class="k">def</span> <span class="nf">trip_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PL303.trip_reset"><a class="viewcode-back" href="../../../../../instruments/manufacturers/tti/pl303.html#xlab.instruments.manufacturers.tti.pl303.PL303.trip_reset">[docs]</a>    <span class="k">def</span> <span class="nf">trip_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="s1">&#39;Reset any trip errors (e.g. over voltage or over current)&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;TRIPRST&#39;</span><span class="p">)</span></div></div>
     
@@ -133,7 +136,7 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../../../../search.html" method="get">
+    <form class="search" action="../../../../../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -150,18 +153,18 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../../../genindex.html" title="General Index"
+          <a href="../../../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../../../py-modindex.html" title="Python Module Index"
+          <a href="../../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../../index.html">xlab 1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, Rob Reilink.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.6.
     </div>
   </body>
 </html>

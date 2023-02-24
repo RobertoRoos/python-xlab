@@ -6,13 +6,16 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>TTi LD400 Electronic DC Load &#8212; xlab 1.0 documentation</title>
+    <title>TTi LD400 Electronic DC Load &#8212; xlab 0.0.2 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="TTi PL303 Power Supply" href="pl303.html" />
@@ -33,7 +36,7 @@
         <li class="right" >
           <a href="../rohdeschwarz/sml01.html" title="Rohde &amp; Schwarz SML01 Signal Generator"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../instruments.html" accesskey="U">Instruments module</a> &#187;</li> 
       </ul>
     </div>  
@@ -45,61 +48,61 @@
             
   <div class="section" id="tti-ld400-electronic-dc-load">
 <h1>TTi LD400 Electronic DC Load<a class="headerlink" href="#tti-ld400-electronic-dc-load" title="Permalink to this headline">¶</a></h1>
-<p>This page describes the API (programmers interface) for this instrument. Information on how to connect to this instrument is given in the documentation of the <a class="reference internal" href="../../instruments.html#module-instruments" title="instruments"><code class="xref py py-mod docutils literal notranslate"><span class="pre">instruments</span></code></a> module</p>
+<p>This page describes the API (programmers interface) for this instrument. Information on how to connect to this instrument is given in the documentation of the <code class="xref py py-mod docutils literal notranslate"><span class="pre">instruments</span></code> module</p>
 <dl class="class">
-<dt id="instruments.manufacturers.tti.ld400.LD400">
-<em class="property">class </em><code class="descclassname">instruments.manufacturers.tti.ld400.</code><code class="descname">LD400</code><span class="sig-paren">(</span><em>port</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/ld400.html#LD400"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.ld400.LD400" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.tti.ld400.LD400">
+<em class="property">class </em><code class="descclassname">xlab.instruments.manufacturers.tti.ld400.</code><code class="descname">LD400</code><span class="sig-paren">(</span><em>port</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/tti/ld400.html#LD400"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.tti.ld400.LD400" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
-<dt id="instruments.manufacturers.tti.ld400.LD400.read_current">
-<code class="descname">read_current</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/ld400.html#LD400.read_current"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.ld400.LD400.read_current" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.tti.ld400.LD400.read_current">
+<code class="descname">read_current</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/tti/ld400.html#LD400.read_current"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.tti.ld400.LD400.read_current" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read the actual output current [A]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.tti.ld400.LD400.read_voltage">
-<code class="descname">read_voltage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/ld400.html#LD400.read_voltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.ld400.LD400.read_voltage" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.tti.ld400.LD400.read_voltage">
+<code class="descname">read_voltage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/tti/ld400.html#LD400.read_voltage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.tti.ld400.LD400.read_voltage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read the actual output voltage [V]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.tti.ld400.LD400.select_level">
-<code class="descname">select_level</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/ld400.html#LD400.select_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.ld400.LD400.select_level" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.tti.ld400.LD400.select_level">
+<code class="descname">select_level</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/tti/ld400.html#LD400.select_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.tti.ld400.LD400.select_level" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select the level (A or B)</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.tti.ld400.LD400.set_CC_mode">
-<code class="descname">set_CC_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/ld400.html#LD400.set_CC_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.ld400.LD400.set_CC_mode" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.tti.ld400.LD400.set_CC_mode">
+<code class="descname">set_CC_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/tti/ld400.html#LD400.set_CC_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.tti.ld400.LD400.set_CC_mode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the mode of the load to constant current [A]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.tti.ld400.LD400.set_CG_mode">
-<code class="descname">set_CG_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/ld400.html#LD400.set_CG_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.ld400.LD400.set_CG_mode" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.tti.ld400.LD400.set_CG_mode">
+<code class="descname">set_CG_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/tti/ld400.html#LD400.set_CG_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.tti.ld400.LD400.set_CG_mode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the mode of the load to constant conductance [S]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.tti.ld400.LD400.set_CP_mode">
-<code class="descname">set_CP_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/ld400.html#LD400.set_CP_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.ld400.LD400.set_CP_mode" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.tti.ld400.LD400.set_CP_mode">
+<code class="descname">set_CP_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/tti/ld400.html#LD400.set_CP_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.tti.ld400.LD400.set_CP_mode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the mode of the load to constant power [W]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.tti.ld400.LD400.set_CR_mode">
-<code class="descname">set_CR_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/ld400.html#LD400.set_CR_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.ld400.LD400.set_CR_mode" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.tti.ld400.LD400.set_CR_mode">
+<code class="descname">set_CR_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/tti/ld400.html#LD400.set_CR_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.tti.ld400.LD400.set_CR_mode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the mode of the load to constant resistance [Ohm]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.tti.ld400.LD400.set_CV_mode">
-<code class="descname">set_CV_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/ld400.html#LD400.set_CV_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.ld400.LD400.set_CV_mode" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.tti.ld400.LD400.set_CV_mode">
+<code class="descname">set_CV_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/tti/ld400.html#LD400.set_CV_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.tti.ld400.LD400.set_CV_mode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the mode of the load to constant voltage [V]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.tti.ld400.LD400.set_level">
-<code class="descname">set_level</code><span class="sig-paren">(</span><em>value</em>, <em>level='A'</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/tti/ld400.html#LD400.set_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.tti.ld400.LD400.set_level" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.tti.ld400.LD400.set_level">
+<code class="descname">set_level</code><span class="sig-paren">(</span><em>value</em>, <em>level='A'</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/tti/ld400.html#LD400.set_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.tti.ld400.LD400.set_level" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the level (A or B; default A) to the given value</p>
 <p>The unit of the value depends on the selected mode (see set_C*_mode
 methods)</p>
@@ -159,13 +162,13 @@ methods)</p>
         <li class="right" >
           <a href="../rohdeschwarz/sml01.html" title="Rohde &amp; Schwarz SML01 Signal Generator"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../instruments.html" >Instruments module</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, Rob Reilink.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.6.
     </div>
   </body>
 </html>

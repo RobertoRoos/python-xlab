@@ -6,27 +6,30 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>instruments.manufacturers.lecroy.oscilloscope &#8212; xlab 1.0 documentation</title>
-    <link rel="stylesheet" href="../../../../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../search.html" /> 
+    <title>xlab.instruments.manufacturers.lecroy.oscilloscope &#8212; xlab 0.0.2 documentation</title>
+    <link rel="stylesheet" href="../../../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../../../genindex.html" title="General Index"
+          <a href="../../../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../../../py-modindex.html" title="Python Module Index"
+          <a href="../../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../../index.html">xlab 1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -35,7 +38,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>Source code for instruments.manufacturers.lecroy.oscilloscope</h1><div class="highlight"><pre>
+  <h1>Source code for xlab.instruments.manufacturers.lecroy.oscilloscope</h1><div class="highlight"><pre>
 <span></span><span class="c1"># BSD 3-Clause License</span>
 <span class="c1"># </span>
 <span class="c1"># Copyright (c) 2018, DEMCON advanced mechatronics</span>
@@ -72,21 +75,21 @@
 
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">...</span> <span class="k">import</span> <span class="n">Instrument</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">wavetemplate</span>
+<span class="kn">from</span> <span class="nn">...</span> <span class="kn">import</span> <span class="n">Instrument</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">wavetemplate</span>
 
 <span class="k">class</span> <span class="nc">Oscilloscope</span><span class="p">(</span><span class="n">Instrument</span><span class="p">):</span>
     <span class="n">channels</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">attenuation_values</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span>
     
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_wave_template</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_replyparser</span><span class="p">(</span><span class="n">pattern</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Return a parser function that uses the regular expression &#39;format&#39; to</span>
 <span class="sd">        match the reply, and converts the result to float</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -114,7 +117,7 @@
     <span class="c1">## Configure scope</span>
     
     <span class="k">def</span> <span class="nf">auto_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Performs an auto setup on the specified channel, or on all channels</span>
 <span class="sd">        if no parameter is provided.</span>
 <span class="sd">        </span>
@@ -132,7 +135,7 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:AUTO_SETUP FIND&#39;</span> <span class="o">%</span> <span class="n">channel</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">set_attenuation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">attenuation</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Sets the probes attenuation factor for the specified channel</span>
 <span class="sd">        </span>
 <span class="sd">        channel: str</span>
@@ -148,7 +151,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:ATTENUATION </span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">attenuation</span><span class="p">))</span>
     
     <span class="k">def</span> <span class="nf">set_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Sets the vertical offset of the specified input channel [V]</span>
 <span class="sd">        Note: the probe attenuation factor is not taken into account</span>
 <span class="sd">        </span>
@@ -193,7 +196,7 @@
         <span class="c1">#TODO: test acquisition, implement different triggers (single, stop etc)</span>
     
     <span class="k">def</span> <span class="nf">set_trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">coupling</span><span class="o">=</span><span class="s1">&#39;AC&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;EDGE&#39;</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="s1">&#39;POS&#39;</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39; </span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39; </span>
 <span class="sd">        Sets the triggering parameters</span>
 <span class="sd">        mode: any of AUTO, NORM, SINGLE, STOP</span>
 <span class="sd">        source: any of EX, LINE or self.channels (e.g C1)</span>
@@ -227,7 +230,7 @@
    
     
     <span class="k">def</span> <span class="nf">read_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">require_exact</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39; </span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39; </span>
 <span class="sd">        Read a parameter from the waveform</span>
 <span class="sd">        </span>
 <span class="sd">        parameter: str</span>
@@ -323,7 +326,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">channel</span> <span class="o">+</span> <span class="s1">&#39;PARAMETER_VALUE? &#39;</span> <span class="o">+</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">parse_parameter</span><span class="p">)</span>
                 
     <span class="k">def</span> <span class="nf">set_custom_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">setting</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Set the custom measurement parameter specified by number to the given setting</span>
 <span class="sd">        </span>
 <span class="sd">        number: int [1..8]</span>
@@ -341,7 +344,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;PARAMETER_CUSTOM </span><span class="si">%d</span><span class="s1">,</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">setting</span><span class="p">))</span>
         
     <span class="k">def</span> <span class="nf">get_custom_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Get the custom measurement parameter setting as string for the given</span>
 <span class="sd">        measurement number.</span>
 <span class="sd">        </span>
@@ -351,7 +354,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;PARAMETER_CUSTOM? </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">number</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
         
     <span class="k">def</span> <span class="nf">read_waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trace</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Retreives the acquired waveform</span>
 <span class="sd">        </span>
 <span class="sd">        trace: str</span>
@@ -387,14 +390,14 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:WAVEFORM? ALL&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">trace</span><span class="p">),</span> <span class="n">parse_waveform</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="HDO6xxx"><a class="viewcode-back" href="../../../../instruments/manufacturers/lecroy/hdo6xxx.html#instruments.manufacturers.lecroy.oscilloscope.HDO6xxx">[docs]</a><span class="k">class</span> <span class="nc">HDO6xxx</span><span class="p">(</span><span class="n">Oscilloscope</span><span class="p">):</span>
+<div class="viewcode-block" id="HDO6xxx"><a class="viewcode-back" href="../../../../../instruments/manufacturers/lecroy/hdo6xxx.html#xlab.instruments.manufacturers.lecroy.oscilloscope.HDO6xxx">[docs]</a><span class="k">class</span> <span class="nc">HDO6xxx</span><span class="p">(</span><span class="n">Oscilloscope</span><span class="p">):</span>
     <span class="n">id_match</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\*IDN LECROY,HDO6...&#39;</span>
     <span class="n">channels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="s1">&#39;C4&#39;</span><span class="p">]</span>
     <span class="n">attenuation_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span></div>
     
 
-<div class="viewcode-block" id="WS104"><a class="viewcode-back" href="../../../../instruments/manufacturers/lecroy/ws104.html#instruments.manufacturers.lecroy.oscilloscope.WS104">[docs]</a><span class="k">class</span> <span class="nc">WS104</span><span class="p">(</span><span class="n">Oscilloscope</span><span class="p">):</span>
-    <span class="n">id_match</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\*IDN LECROY,WS104&#39;</span>
+<div class="viewcode-block" id="WSxxx"><a class="viewcode-back" href="../../../../../instruments/manufacturers/lecroy/ws104.html#xlab.instruments.manufacturers.lecroy.oscilloscope.WSxxx">[docs]</a><span class="k">class</span> <span class="nc">WSxxx</span><span class="p">(</span><span class="n">Oscilloscope</span><span class="p">):</span>
+    <span class="n">id_match</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\*IDN LECROY,WS[0-9A-Z]+&#39;</span>
     <span class="n">channels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="s1">&#39;C4&#39;</span><span class="p">]</span>
     <span class="n">attenuation_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span></div>
 </pre></div>
@@ -407,7 +410,7 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../../../../search.html" method="get">
+    <form class="search" action="../../../../../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -424,18 +427,18 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../../../genindex.html" title="General Index"
+          <a href="../../../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../../../py-modindex.html" title="Python Module Index"
+          <a href="../../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../../index.html">xlab 1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, Rob Reilink.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.6.
     </div>
   </body>
 </html>

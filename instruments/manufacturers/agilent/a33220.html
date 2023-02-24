@@ -6,13 +6,16 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Agilent 33220 Function generator &#8212; xlab 1.0 documentation</title>
+    <title>Agilent 33220 Function generator &#8212; xlab 0.0.2 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Agilent 335xx Function generator" href="a335xx.html" />
@@ -33,7 +36,7 @@
         <li class="right" >
           <a href="../../instruments.html" title="Instruments module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../instruments.html" accesskey="U">Instruments module</a> &#187;</li> 
       </ul>
     </div>  
@@ -45,21 +48,21 @@
             
   <div class="section" id="agilent-33220-function-generator">
 <h1>Agilent 33220 Function generator<a class="headerlink" href="#agilent-33220-function-generator" title="Permalink to this headline">¶</a></h1>
-<p>This page describes the API (programmers interface) for this instrument. Information on how to connect to this instrument is given in the documentation of the <a class="reference internal" href="../../instruments.html#module-instruments" title="instruments"><code class="xref py py-mod docutils literal notranslate"><span class="pre">instruments</span></code></a> module</p>
+<p>This page describes the API (programmers interface) for this instrument. Information on how to connect to this instrument is given in the documentation of the <code class="xref py py-mod docutils literal notranslate"><span class="pre">instruments</span></code> module</p>
 <dl class="class">
-<dt id="instruments.manufacturers.agilent.a33220.A33220">
-<em class="property">class </em><code class="descclassname">instruments.manufacturers.agilent.a33220.</code><code class="descname">A33220</code><span class="sig-paren">(</span><em>interface_id</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/instruments/manufacturers/agilent/a33220.html#A33220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220">
+<em class="property">class </em><code class="descclassname">xlab.instruments.manufacturers.agilent.a33220.</code><code class="descname">A33220</code><span class="sig-paren">(</span><em>interface_id</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/xlab/instruments/manufacturers/agilent/a33220.html#A33220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.apply">
-<code class="descname">apply</code><span class="sig-paren">(</span><em>function</em>, <em>frequency</em>, <em>amplitude</em>, <em>offset=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.apply" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>function</em>, <em>frequency</em>, <em>amplitude</em>, <em>offset=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the function generator function, frequency [Hz], amplitude [Vpp] and offset
 cancel any modulation, enable output</p>
 <p>function: any of: ‘SIN’, ‘SQUARE’, ‘RAMP’, ‘PULSE’, ‘NOISE’, ‘DC’, ‘USER’</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.load_waveform">
-<code class="descname">load_waveform</code><span class="sig-paren">(</span><em>wave</em>, <em>activate=True</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.load_waveform" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.load_waveform">
+<code class="descname">load_waveform</code><span class="sig-paren">(</span><em>wave</em>, <em>activate=True</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.load_waveform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a waveform specified by wave. Wave is an iterable of floats between
 -1.0 and 1.0</p>
 <p>If activate == True (default), select the waveform and select the
@@ -67,101 +70,101 @@ cancel any modulation, enable output</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.select_user_waveform">
-<code class="descname">select_user_waveform</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.select_user_waveform" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.select_user_waveform">
+<code class="descname">select_user_waveform</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.select_user_waveform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name should be any of EXP_RISE, EXP_FALL, NEG_RAMP, SINC, CARDIAC, VOLATILE</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_amplitude_vpp">
-<code class="descname">set_amplitude_vpp</code><span class="sig-paren">(</span><em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_amplitude_vpp" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_amplitude_vpp">
+<code class="descname">set_amplitude_vpp</code><span class="sig-paren">(</span><em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_amplitude_vpp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the output amplitude [V peak-peak]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_amplitude_vrms">
-<code class="descname">set_amplitude_vrms</code><span class="sig-paren">(</span><em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_amplitude_vrms" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_amplitude_vrms">
+<code class="descname">set_amplitude_vrms</code><span class="sig-paren">(</span><em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_amplitude_vrms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the output amplitude [V rms]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_frequency">
-<code class="descname">set_frequency</code><span class="sig-paren">(</span><em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_frequency" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_frequency">
+<code class="descname">set_frequency</code><span class="sig-paren">(</span><em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_frequency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the output frequency [Hz]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_function">
-<code class="descname">set_function</code><span class="sig-paren">(</span><em>function</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_function" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_function">
+<code class="descname">set_function</code><span class="sig-paren">(</span><em>function</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the function generator function</p>
 <p>function: any of ‘SIN’, ‘SQUARE’, ‘RAMP’, ‘PULSE’, ‘NOISE’, ‘DC’, ‘USER’</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_load">
-<code class="descname">set_load</code><span class="sig-paren">(</span><em>load</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_load" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_load">
+<code class="descname">set_load</code><span class="sig-paren">(</span><em>load</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the output load. Can be a float [Ohm] or ‘INF’, ‘MIN’, ‘MAX’.
 Note: for consistency, a float value of ‘+inf’ corresponds to
 ‘MAX’, and thus not to ‘INF’</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_offset">
-<code class="descname">set_offset</code><span class="sig-paren">(</span><em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_offset" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_offset">
+<code class="descname">set_offset</code><span class="sig-paren">(</span><em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_offset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the output offset [V]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_period">
-<code class="descname">set_period</code><span class="sig-paren">(</span><em>period</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_period" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_period">
+<code class="descname">set_period</code><span class="sig-paren">(</span><em>period</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_period" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the period [s], this is the inverse of the frequency</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_pulse_dutycyle">
-<code class="descname">set_pulse_dutycyle</code><span class="sig-paren">(</span><em>dutycycle</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_pulse_dutycyle" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_pulse_dutycyle">
+<code class="descname">set_pulse_dutycyle</code><span class="sig-paren">(</span><em>dutycycle</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_pulse_dutycyle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the duty cycle for pulse function [0..1]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_pulse_transition">
-<code class="descname">set_pulse_transition</code><span class="sig-paren">(</span><em>transition</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_pulse_transition" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_pulse_transition">
+<code class="descname">set_pulse_transition</code><span class="sig-paren">(</span><em>transition</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_pulse_transition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the transition time for the pulse function [s]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_pulse_width">
-<code class="descname">set_pulse_width</code><span class="sig-paren">(</span><em>width</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_pulse_width" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_pulse_width">
+<code class="descname">set_pulse_width</code><span class="sig-paren">(</span><em>width</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_pulse_width" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the pulse width for the pulse function [s]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_ramp_symmetry">
-<code class="descname">set_ramp_symmetry</code><span class="sig-paren">(</span><em>symmetry</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_ramp_symmetry" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_ramp_symmetry">
+<code class="descname">set_ramp_symmetry</code><span class="sig-paren">(</span><em>symmetry</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_ramp_symmetry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the symmetry for ramp function [0..1]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_square_dutycycle">
-<code class="descname">set_square_dutycycle</code><span class="sig-paren">(</span><em>dutycycle</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_square_dutycycle" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_square_dutycycle">
+<code class="descname">set_square_dutycycle</code><span class="sig-paren">(</span><em>dutycycle</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_square_dutycycle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the duty cycle for square wave function [0..1]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_text">
-<code class="descname">set_text</code><span class="sig-paren">(</span><em>text=None</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_text" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_text">
+<code class="descname">set_text</code><span class="sig-paren">(</span><em>text=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the given text on the display. text==None (default) restores normal display</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_voltage_high">
-<code class="descname">set_voltage_high</code><span class="sig-paren">(</span><em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_voltage_high" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_voltage_high">
+<code class="descname">set_voltage_high</code><span class="sig-paren">(</span><em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_voltage_high" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the output high level voltage [V]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="instruments.manufacturers.agilent.a33220.A33220.set_voltage_low">
-<code class="descname">set_voltage_low</code><span class="sig-paren">(</span><em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#instruments.manufacturers.agilent.a33220.A33220.set_voltage_low" title="Permalink to this definition">¶</a></dt>
+<dt id="xlab.instruments.manufacturers.agilent.a33220.A33220.set_voltage_low">
+<code class="descname">set_voltage_low</code><span class="sig-paren">(</span><em>voltage</em><span class="sig-paren">)</span><a class="headerlink" href="#xlab.instruments.manufacturers.agilent.a33220.A33220.set_voltage_low" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the output low level voltage [V]</p>
 </dd></dl>
 
@@ -219,13 +222,13 @@ Note: for consistency, a float value of ‘+inf’ corresponds to
         <li class="right" >
           <a href="../../instruments.html" title="Instruments module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">xlab 0.0.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../instruments.html" >Instruments module</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, Rob Reilink.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.6.
     </div>
   </body>
 </html>
