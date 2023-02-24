@@ -28,5 +28,9 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install
+      # Do the install and perform the most basics of tests - I don't want to write formal unit tests
       run: |
         python -m pip install .
+        python -m pip install pyvisa-py
+        echo "from xlab.instruments.manufacturers.velleman.k8090 import K8090" > test_import.py
+        python test_import.py
